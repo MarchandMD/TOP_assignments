@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <link href="modalphotos.css" rel="stylesheet" type="text/css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+  <div id="mySidenav" class="sidenav">
+    <a class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="modalphotos.html">photos</a>
+    <a href="rulesofhockey.html">Hockey Rules</a>
+    <a href="about.html">About</a>
+    <a href="index.html">home</a>
+  </div>  
+
+  
+  
+ 
+
+  <div id="main">
+      <header>
+          <h1>My Webpage: Modal Photos</h1>
+        </header>
+    <button onclick="openNav()">MODAL PHOTOS</button>
+    <div id="myModal" class="modal">
+      <span class="close">&times;</span> <!-- the close button -->
+      <div id="caption"></div>
+      <img class="modal-content" id="img01" alt="the Alt"><!--  modal content (the image) -->
+      
+    </div>
+
+    <div class="gallery" id="divA">
+      <figure class="gallery__item gallery__item--1">
+        <img src="photos/DSC_0169.jpg" class="gallery__img" alt="image 1" onclick="getThisImage(this)">
+      </figure>
+      <figure class="gallery__item gallery__item--2">
+        <img src="photos/DSC_0170.jpg" class="gallery__img" alt="image 2" onclick="getThisImage(this)">
+      </figure>
+      <figure class="gallery__item gallery__item--3">
+        <img src="photos/DSC_0177.jpg" class="gallery__img" alt="image 3" onclick="getThisImage(this)">
+      </figure>
+      <figure class="gallery__item gallery__item--4">
+        <img src="photos/samuraiPainter.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 4" id="colorMeLucky">
+      </figure>
+      <figure class="gallery__item gallery__item--5">
+        <img src="photos/DSC_0188 (1).jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 5">
+      </figure>
+      <figure class="gallery__item gallery__item--6">
+        <img src="photos/IMG_2578.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 6">
+      </figure>
+      <figure class="gallery__item gallery__item--7">
+        <img src="photos/DSC_0192.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 7">
+      </figure>
+      <figure class="gallery__item gallery__item--8 span_2_rows span_3_columns">
+        <img src="photos/DSC_0186.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 8">
+      </figure>
+      <figure class="gallery__item gallery__item--9 span_3_columns span_4_rows">
+        <img src="photos/andTheArtistGoesBy.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 9">
+      </figure>
+      <figure class="gallery__item gallery__item--10 span_2_columns span_2_rows">
+        <img src="photos/tapTheGlassAgainMotherFucker.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 10">
+      </figure>
+      <figure class="gallery__item gallery__item--11 span_2_rows">
+        <img src="photos/justTiger.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 11">
+      </figure>
+      <figure class="gallery__item gallery__item--12 span_2_columns span_3_rows">
+        <img src="photos/letsRide.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image__img">
+      </figure>
+      <figure class="gallery__item gallery__item--13 span_6_columns span_2_rows">
+        <img src="photos/ghostWarriors.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 13">
+      </figure> 
+      <figure class="gallery__item gallery__item--14 span_4_columns span_3_rows">
+        <img src="photos/thisAlley.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 14">
+      </figure>
+      <figure class="gallery__item gallery__item--15 span_4_columns span_6_rows">
+        <img src="photos/LYFE – Version 3.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 15">
+      </figure>
+      <figure class="gallery__item gallery__item--16 span_4_columns span_3_rows">
+        <img src="photos/colourMeLuckyWithContext.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 16">
+      </figure>
+      <figure class="gallery__item gallery__item--17 span_2_columns span_3_rows">
+        <img src="photos/DSC_0023.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 17" />
+      </figure>
+      <figure class="gallery__item gallery__item--18">
+        <img src="photos/eyesInTheWest.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 18">
+      </figure>
+      <figure class="gallery__item gallery__item--19 span_2_rows span_4_columns">
+        <img src="photos/nothingWithoutCourageLight.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 19">
+      </figure>
+      <figure class="gallery__item gallery__item--20 span_2_rows">
+        <img src="photos/IMG_2575.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 20">
+      </figure>
+      <figure class="gallery__item gallery__item--21 span_6_rows span_6_columns">
+        <img src="photos/LoveGrafittiOnStepSideOfStreet.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 21">
+      </figure>
+      <figure class="gallery__item gallery__item--22 span_2_rows">
+        <img src="photos/NorthFromChautauquaTrail.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 22">
+      </figure>
+      <figure class="gallery__item gallery__item--23">
+        <img src="photos/oneLine.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 23">
+      </figure>
+      <figure class="gallery__item gallery__item--24 span_5_columns">
+        <img src="photos/someBlood.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 24">
+      </figure>
+      <figure class="gallery__item gallery__item--25 span_3_rows span_3_columns">
+        <img src="photos/tigerAlley.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 25">
+      </figure>
+      <figure class="gallery__item gallery__item--26 span_2_columns span_3_rows">
+        <img src="photos/Version 2.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 26">
+      </figure>
+      <figure class="gallery__item gallery__item--27">
+        <img src="photos/warriorEyes.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 27">
+      </figure>
+      <figure class="gallery__item gallery__item--28">
+        <img src="photos/whereTho.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 28">
+      </figure>
+      <figure class="gallery__item gallery__item--29 span_5_rows span_5_columns">
+        <img src="photos/youWontEvenLookAtMe.jpg" class="gallery__img" onclick="getThisImage(this)" alt="image 29">
+      </figure>
+    </div>
+
+ 
+  
+  </div>
+        
+       
+  
+        
+
+    
+
+
+  
+    
+
+
+
+
+
+
+  <script src="index.js">
+  </script>
+  <script src="modalphotos.js"></script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+}
+
+
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+}
+
+header, footer {
+  height: 5vh;
+}
+
+/*responsive*/
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 100%;
+}
+
+@media (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
+}
+
+@media (max-device-width: 1366px) {
+  .parallax {
+    background-attachment: scroll;
+  }
+}
+
+
+
+
+
+
+.sidenav {
+  height: 100%;
+  width: 0; /*this is the default- hidden; changes with JS */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  position: relative;
+}
+
+.withTopMargin {
+  margin-top: 20px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+img {
+  width: 100%;
+}
+
+ .mySlides {
+  display: none;
+} 
+
+.cursor {
+  cursor: pointer;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.demo:hover, .active {
+  opacity: 1;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  width: auto;
+  padding: 20px;
+  color: white;
+  background-color: gray;
+  opacity: 0.5;
+  font-size: 22px;
+}
+
+.prev {
+  border-radius: 0 3px 3px 0;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+#slideshowWindow {
+  height: 50vh;
+}
+
+#thumbnails {
+  background-color: gray;
+  z-index: 0;
+}
+
+.numberText {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}

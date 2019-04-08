@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    background-color: lightslategray;
+}
+
+header {
+    background: darkslategray;
+    padding: 20px;
+
+}
+
+header h1 {
+    color: white;
+    text-align: center;
+}
+
+.score-board {
+    border: 3px solid white;
+    width: 200px;
+    margin: 20px auto;
+    color: white;
+    font-size: 40px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 15px 20px;
+    position: relative;
+}
+
+.badge {
+    background-color: red;
+    font-size: 14px;
+    padding: 2px 10px;
+    font-weight: bold;
+}
+
+#user-label {
+    position: absolute;
+    top: 30px;
+    left: -25px;
+}
+
+#comp-label {
+    position: absolute;
+    top: 30px;
+    right: -30px;
+}
+
+.pulse {
+    animation: pulse 0.2s ease;
+}
+
+@keyframes pulse {
+    0% {box-shadow: none;}
+    50% {box-shadow: 0 5px 5px white;}
+    100% {box-shadow: none;}
+}
+
+.result {
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px 0;
+}
+
+.choice {
+    border: 2px solid white;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+img {
+    width: 200px;
+}
+
+.choice:hover {
+    cursor: pointer;
+    background: lightgray;
+}
+
+#action-message {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
