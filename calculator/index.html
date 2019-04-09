@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header id="theTop">
+        <h1>my calculator</h1>
+        <h5><a href="#theContent">see below</a></h5>
+    </header>
+
+    <section class="about" data-section="about">
+
+        <div class="main" data-section="about-title" id="theContent">
+
+            <div class="calculator" data-section="hisH2">
+
+                <div class="screen" id="screen">0</div>
+
+                <div class="button numeric" id="one" data-value="1">1</div>
+
+                <div data-value="2" class="button numeric" id="two">2</div>
+
+                <div data-value="3" class="button numeric" id="three">3</div>
+
+                <div data-value="" class="button operator" id="plus">+</div>
+
+                <div data-value="4" class="button numeric" id="four">4</div>
+
+                <div data-value="5" class="button numeric" id="five">5</div>
+
+                <div data-value="6" class="button numeric" id="six">6</div>
+
+                <div data-value="" class="button operator" id="minus">-</div>
+
+                <div data-value="7" class="button numeric" id="seven">7</div>
+
+                <div data-value="8" class="button numeric" id="eight">8</div>
+
+                <div data-value="9" class="button numeric" id="nine">9</div>
+
+                <div data-value="" class="button operator" id="times">*</div>
+
+                <div data-value="0" class="button numeric" id="zero">0</div>
+
+                <div data-value="" class="button operator" id="divide">/</div>
+
+                <div data-value="clear" class="button" id="clear">clear</div>
+
+                <div class="button" id="enter">Enter</div>
+            </div>
+
+
+        </div>
+
+        <div class="about-pages">
+
+            <div id="step1">
+                <h2>How I did this: Step1</h2>
+                <p>So, I feel it's necessary to share a little bit about this process, because this happened quickly, and I want to appreciate what I've built by having some recollection of it.</p>
+                <p>The tutorials I've been watching and emulating typically have followed a similar work flow: Frame out the HTML with an eye to the CSS, write most of the CSS, then wrap in the JS. So this is what I did:</p>
+                <p>This page consists of a header that's 100vh; h1 and h5 are children</p>
+                <a href="#step2">next</a>
+            </div>
+
+            <div  id="step2">
+                <h2>Step 2</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo maxime, rem aliquam quae accusantium eaque magnam quia temporibus quidem dicta incidunt est nemo vitae vero ad deserunt asperiores eius. Id.</p>
+                <a href="#step3">next</a>
+            </div>
+
+            <div id="step3">
+                <h2>Step 3</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus nostrum dolorem, reiciendis architecto delectus officia sapiente, ipsum sit maxime enim magnam, itaque ratione facilis veritatis odio nulla. Deleniti, architecto quia.</p>
+                <a href="#footer">conclusion</a>
+            </div>
+        </div>
+
+    </section>
+
+    <footer id="footer">
+        <div>
+            <p>Thanks for checking it out!</p>
+            <p>Feel free to <a href="#theTop">go up to the top</a>, or back to the <a href="#step1">calculator</a></p>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.6/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <script src="calc.js"></script>
+</body>
+
+</html>
