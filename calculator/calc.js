@@ -4,6 +4,7 @@ const buttons = document.querySelectorAll('.button');
 const numericBtns = document.querySelectorAll('.numeric');
 
 /* the display of the calculator; I use this JS variable with .textContent many times in this script; I also need to remove the clickability of this grid item; maybe remove the class of button from it? That was easy...now just apply some styling to it */
+
 const screen = document.querySelector('#screen');
 /* //the operator buttons! This was a stroke of genius for me; really made everything come together. I have event listeners on them. Instead of trying to run a function when they're pushed, I use their id and assign it to a global variable of 'operation', which I use as part of the calculate(). It's not that I realize I'd like to re-factor this to dispose of the use of global variables */
 const operatorBtns = document.querySelectorAll('.operator');
@@ -51,7 +52,7 @@ numericBtns.forEach(btn => {
     //here i'm adding a 'click' event listener, and then defining the function of things to do when a number button is pushed
     btn.addEventListener('click', function () {
         //I am pushing the data-attribute (again, i'm taking this from Wes Bos's Javascript30 course...highly recommended); I suppose now I could probably push the textContent of the button, and remove this redundancy
-        if (displayValue.length < 13) {
+        if (displayValue.length < 10) {
             displayValue.push(this.getAttribute('data-value'));
         }
         //i'm also assigning the contents of the displayValue array to the screen text Content. Really what i'm doing is combining the values of the array into a single string, and then assigning that to the screen. However you'd like to read it...
@@ -109,12 +110,7 @@ enterBtn.addEventListener('click', () => {
     //then display the maths
     screen.textContent = calculate(myArray, operation);
 });
-enterBtn.addEventListener('keydown', () => {
-    //push the second operand to the myArray array
-    myArray.push(parseInt(displayValue.join('')));
-    //then display the maths
-    screen.textContent = calculate(myArray, operation);
-});
+
 
 //everything else I do with this is just icing on the cake. Stylistically, aesthetically... I've achieved what I set out to do and feel comfortable moving on with the TOP curriculum
 
@@ -122,11 +118,84 @@ enterBtn.addEventListener('keydown', () => {
 const controller = new ScrollMagic.Controller();
 
 new ScrollMagic.Scene({
-    duration: '200%', /* where will the end indicator be placed? */
-    triggerElement: '.main', /*On top of what element will the start indicator be placed? */
-    triggerHook: 0 /* Where will the trigger be placed?*/
-})
-.addIndicators()
-.setPin('.main')/* What element is going to be pinned while scroll magic is occuring? */
-.addTo(controller);
+        duration: '200%',
+        /* where will the end indicator be placed? */
+        triggerElement: '.main',
+        /*On top of what element will the start indicator be placed? */
+        triggerHook: 0 /* Where will the trigger be placed?*/
+    })
+    .addIndicators()
+    .setPin('.main') /* What element is going to be pinned while scroll magic is occuring? */
+    .addTo(controller);
 
+//*Adding eventListeners to keyboard
+document.addEventListener('keydown', function (e) {
+    if (e.keyCode == 12) {
+        displayValue = [];
+        screen.textContent = 0;
+        myArray = [];
+    };
+
+    if (e.keyCode == 107) {
+        operation = "plus";
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
+    }
+    if (e.keyCode == 106) {
+        operation = "times";
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
+    }
+    if (e.keyCode == 109) {
+        operation = "minus";
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
+    }
+    if (e.keyCode == 111) {
+        operation = "divide";
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
+    }
+
+    if (displayValue.length < 10) {
+
+        if (e.keyCode == 13) { //Enter button
+            //join the numbers in the displayValue array, turn them into an integer, and push them to myArray
+            myArray.push(parseInt(displayValue.join('')));
+            //And also change the screen.textContent to the result of the calculate function;
+            screen.textContent = calculate(myArray, operation);
+        } else if (e.keyCode == 96 || e.keyCode == 48) { //the one buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 97 || e.keyCode == 49) { //the one buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 98 || e.keyCode == 50) { //the two buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 99 || e.keyCode == 51) { //the three buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 100 || e.keyCode == 52) { //the four buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 101 || e.keyCode == 53) { //the five buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 102 || e.keyCode == 54) { //the six buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 103 || e.keyCode == 55) { //the seven buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 104 || e.keyCode == 56) { //the eight buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else if (e.keyCode == 105 || e.keyCode == 57) { //the nine buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
+        } else {
+            return;
+        }
+    } else {return;};
+})
