@@ -1,3 +1,6 @@
+//!NEXT ISSUE: HITTING OPERATOR BUTTON ON KEYPAD RESULTS IN CALCULATE FUNCTION AND SCREEN OUTPUT
+
+
 const buttons = document.querySelectorAll('.button');
 const numericBtns = document.querySelectorAll('.numeric');
 const screen = document.querySelector('#screen');
