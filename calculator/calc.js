@@ -5,6 +5,8 @@ const operatorBtns = document.querySelectorAll('.operator');
 const enterBtn = document.querySelector('#enter');
 const clearBtn = document.querySelector('#clear');
 let displayValue = [];
+let operands = [];
+let result;
 let operation;
 
 buttons.forEach(button => {
@@ -20,7 +22,7 @@ buttons.forEach(button => {
 clearBtn.addEventListener('click', () => {
     displayValue = [];
     screen.textContent = 0;
-    myArray = [];
+    operands = [];
 })
 
 numericBtns.forEach(btn => {
@@ -36,7 +38,7 @@ numericBtns.forEach(btn => {
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         operation = this.id;
-        myArray.push(parseInt(displayValue.join('')));
+        operands.push(parseInt(displayValue.join('')));
         displayValue = [];
     })
 })
@@ -62,13 +64,17 @@ function calculate(arr, str) {
 }
 
 
-myArray = [];
+
 
 
 
 enterBtn.addEventListener('click', () => {
-    myArray.push(parseInt(displayValue.join('')));
-    screen.textContent = calculate(myArray, operation);
+    operands.push(parseInt(displayValue.join('')));
+    result = calculate(operands, operation);
+    screen.textContent = result;
+    operands = [];
+    operands.push(result);
+    displayValue = [result];
 });
 
 
@@ -78,36 +84,36 @@ document.addEventListener('keydown', function (e) {
     if (e.keyCode == 12) {
         displayValue = [];
         screen.textContent = 0;
-        myArray = [];
+        operands = [];
     };
 
     if (e.keyCode == 107) {
         operation = "plus";
-        myArray.push(parseInt(displayValue.join('')));
+        operands.push(parseInt(displayValue.join('')));
         displayValue = [];
     }
     if (e.keyCode == 106) {
         operation = "times";
-        myArray.push(parseInt(displayValue.join('')));
+        operands.push(parseInt(displayValue.join('')));
         displayValue = [];
     }
     if (e.keyCode == 109) {
         operation = "minus";
-        myArray.push(parseInt(displayValue.join('')));
+        operands.push(parseInt(displayValue.join('')));
         displayValue = [];
     }
     if (e.keyCode == 111) {
         operation = "divide";
-        myArray.push(parseInt(displayValue.join('')));
+        operands.push(parseInt(displayValue.join('')));
         displayValue = [];
     }
 
     if (displayValue.length < 10) {
 
         if (e.keyCode == 13) { //Enter button
-            myArray.push(parseInt(displayValue.join('')));
+            operands.push(parseInt(displayValue.join('')));
             //And also change the screen.textContent to the result of the calculate function;
-            screen.textContent = calculate(myArray, operation);
+            screen.textContent = calculate(operands, operation);
         } else if (e.keyCode == 96 || e.keyCode == 48) { //the one buttons
             displayValue.push(e.key);
             screen.textContent = displayValue.join('');
