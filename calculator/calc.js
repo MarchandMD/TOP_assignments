@@ -4,7 +4,7 @@ const screen = document.querySelector('#screen');
 const operatorBtns = document.querySelectorAll('.operator');
 const enterBtn = document.querySelector('#enter');
 const clearBtn = document.querySelector('#clear');
-let displayValue = [];
+let digits = [];
 let operands = [];
 let result;
 let operation;
@@ -20,26 +20,27 @@ buttons.forEach(button => {
 });
 
 clearBtn.addEventListener('click', () => {
-    displayValue = [];
+    digits = [];
     screen.textContent = 0;
     operands = [];
 })
 
 numericBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-        if (displayValue.length < 10) {
-            displayValue.push(this.getAttribute('data-value'));
+    btn.addEventListener('click', function (e) {
+        if (digits.length < 10) {
+            digits.push(parseInt(this.getAttribute('data-value')));
         }
-        screen.textContent = displayValue.join('');
+        screen.textContent = digits.join('');
     })
 })
 
-
+//!THIS IS FOR MOUSE CLICKS!!!!
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         operation = this.id;
-        operands.push(parseInt(displayValue.join('')));
-        displayValue = [];
+        operands.push(parseInt(digits.join('')));
+        digits = [];
+        console.log(operands);
     })
 })
 
@@ -67,83 +68,90 @@ function calculate(arr, str) {
 
 
 
-
+//!THIS IS FOR MOUSE CLICKS ONLY
 enterBtn.addEventListener('click', () => {
-    operands.push(parseInt(displayValue.join('')));
+    operands.push(parseInt(digits.join('')));
     result = calculate(operands, operation);
     screen.textContent = result;
     operands = [];
-    operands.push(result);
-    displayValue = [result];
+    console.log(operands);
+
 });
 
 
-
+//!THIS IS FOR THE KEYPAD/KEYBOARD
 //*Adding eventListeners to keyboard
 document.addEventListener('keydown', function (e) {
     if (e.keyCode == 12) {
-        displayValue = [];
+        digits = [];
         screen.textContent = 0;
         operands = [];
     };
 
     if (e.keyCode == 107) {
         operation = "plus";
-        operands.push(parseInt(displayValue.join('')));
-        displayValue = [];
+        operands.push(parseInt(digits.join('')));
+        digits = [];
+        console.log(`The operands are: ${operands}`);
+        console.log(`The operation is: ${operation}`);
     }
     if (e.keyCode == 106) {
         operation = "times";
-        operands.push(parseInt(displayValue.join('')));
-        displayValue = [];
+        operands.push(parseInt(digits.join('')));
+        digits = [];
     }
     if (e.keyCode == 109) {
         operation = "minus";
-        operands.push(parseInt(displayValue.join('')));
-        displayValue = [];
+        operands.push(parseInt(digits.join('')));
+        digits = [];
+        console.log(`The operands are: ${operands}`);
+        console.log(`The operation is: ${operation}`);
     }
     if (e.keyCode == 111) {
         operation = "divide";
-        operands.push(parseInt(displayValue.join('')));
-        displayValue = [];
+        operands.push(parseInt(digits.join('')));
+        digits = [];
     }
 
-    if (displayValue.length < 10) {
+    if (digits.length < 10) {
 
         if (e.keyCode == 13) { //Enter button
-            operands.push(parseInt(displayValue.join('')));
-            //And also change the screen.textContent to the result of the calculate function;
-            screen.textContent = calculate(operands, operation);
-        } else if (e.keyCode == 96 || e.keyCode == 48) { //the one buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            operands.push(parseInt(digits.join('')));
+            digits = [];
+            result = calculate(operands, operation);
+            screen.textContent = result;
+            digits = [result.toString()];
+            operands = [];
+        } else if (e.keyCode == 96 || e.keyCode == 48) { //the zero buttons
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 97 || e.keyCode == 49) { //the one buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 98 || e.keyCode == 50) { //the two buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 99 || e.keyCode == 51) { //the three buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 100 || e.keyCode == 52) { //the four buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 101 || e.keyCode == 53) { //the five buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 102 || e.keyCode == 54) { //the six buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 103 || e.keyCode == 55) { //the seven buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 104 || e.keyCode == 56) { //the eight buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else if (e.keyCode == 105 || e.keyCode == 57) { //the nine buttons
-            displayValue.push(e.key);
-            screen.textContent = displayValue.join('');
+            digits.push(e.key);
+            screen.textContent = digits.join('');
         } else {
             return;
         }
