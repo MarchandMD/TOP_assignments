@@ -95,8 +95,9 @@ document.addEventListener('keydown', function (e) {
         operation = "plus";
         operands.push(parseInt(digits.join('')));
         digits = [];
-        console.log(`The operands are: ${operands}`);
-        console.log(`The operation is: ${operation}`);
+        if (operands.length > 1) {
+            screen.textContent = calculate(operands, operation);
+        }
     }
     if (e.keyCode == 106) {
         operation = "times";
@@ -123,7 +124,7 @@ document.addEventListener('keydown', function (e) {
             digits = [];
             result = calculate(operands, operation);
             screen.textContent = result;
-            digits = [result.toString()];
+            //digits = [result.toString()];
             operands = [];
         } else if (e.keyCode == 96 || e.keyCode == 48) { //the zero buttons
             digits.push(e.key);
