@@ -303,7 +303,8 @@ p.flash {
     padding: .4em .8em;
     width: 100%;
     text-align: center;
-    border-top: 0
+    border-top: 0;
+    font-size: 28px;
 }
 
 p.flash:empty {
