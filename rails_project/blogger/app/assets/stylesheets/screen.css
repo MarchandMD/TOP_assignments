@@ -161,14 +161,14 @@ h1 {
 }
 
 html {
-    background: #928add;
+    background: #1908b1;
     -moz-background-size: 80px 80px;
     -webkit-background-size: 80px 80px;
     -o-background-size: 80px 80px;
     background-size: 80px 80px;
-    background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(25%, rgba(101, 101, 101, 0.1)), color-stop(25%, rgba(101, 101, 101, 0)), color-stop(50%, rgba(101, 101, 101, 0)), color-stop(50%, rgba(101, 101, 101, 0.1)), color-stop(75%, rgba(101, 101, 101, 0.1)), color-stop(75%, rgba(101, 101, 101, 0)), color-stop(100%, rgba(101, 101, 101, 0)));
+    /* background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(25%, rgba(101, 101, 101, 0.1)), color-stop(25%, rgba(101, 101, 101, 0)), color-stop(50%, rgba(101, 101, 101, 0)), color-stop(50%, rgba(101, 101, 101, 0.1)), color-stop(75%, rgba(101, 101, 101, 0.1)), color-stop(75%, rgba(101, 101, 101, 0)), color-stop(100%, rgba(101, 101, 101, 0)));
     background-image: -moz-linear-gradient(left top, rgba(101, 101, 101, 0.1) 25%, rgba(101, 101, 101, 0) 25%, rgba(101, 101, 101, 0) 50%, rgba(101, 101, 101, 0.1) 50%, rgba(101, 101, 101, 0.1) 75%, rgba(101, 101, 101, 0) 75%, rgba(101, 101, 101, 0));
-    background-image: linear-gradient(left top, rgba(101, 101, 101, 0.1) 25%, rgba(101, 101, 101, 0) 25%, rgba(101, 101, 101, 0) 50%, rgba(101, 101, 101, 0.1) 50%, rgba(101, 101, 101, 0.1) 75%, rgba(101, 101, 101, 0) 75%, rgba(101, 101, 101, 0))
+    background-image: linear-gradient(left top, rgba(101, 101, 101, 0.1) 25%, rgba(101, 101, 101, 0) 25%, rgba(101, 101, 101, 0) 50%, rgba(101, 101, 101, 0.1) 50%, rgba(101, 101, 101, 0.1) 75%, rgba(101, 101, 101, 0) 75%, rgba(101, 101, 101, 0)) */
 }
 
 body {
