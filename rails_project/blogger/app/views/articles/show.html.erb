@@ -30,6 +30,9 @@ The second thing the bin/rails generate model Artice command does is create a fi
 
 <%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
 
+<h3>Comments:</h3>
+<%= render partial: 'articles/comment', collection: @article.comments%>
+<%= render partial: 'comments/form' %>
 <%= link_to "<< Back to Articles List", articles_path %>
 <%# Added a link to "edit".....so i can use the ruby helper method 'link_to'...then whatever textContent I want to show in quotes, a  comma, then let the link/text know where I want it to connect to; in this situation i'm saying edit_article_path...which edit_article is a Prefix from the bin/rails routes table....which shows me what the possible URL, HTTP paths are for the different type of requests.....I see that there is only one edit_article prefix, and that leads tot he Controller#Action of articles#edit....so after I edit, i'll need to use either the articles#update controller/action URI pattern....for either PATCH OR PUT...and they're the same format...they simply have different verbs %>
 <%= link_to "edit", edit_article_path(@article) %>
