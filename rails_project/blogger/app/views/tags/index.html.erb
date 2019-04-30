@@ -1,0 +1,12 @@
+<%# This is just copy and pasted from the articles/index.html.erb right now; i get an error if I go to localhost:3000/tags %>
+<h1>Odin Project Blog: TAGS</h1>
+
+<ul class="articles">
+    <% @tags.each do |tag| %>
+    <li>
+        <%= link_to tag.name, article_path(:tags) %>
+    </li>
+    <% end %>
+</ul>
+
+<%= link_to "Create a New Article", new_article_path, class: "new_article" %>

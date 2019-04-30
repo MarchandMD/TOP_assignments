@@ -3,6 +3,10 @@
 <ul class="articles">
     <% @articles.each do |article| %>
     <li>
+    <%# in ERB tag, it shows link_to and then article.title; .title is an attribute of the article; What is the attribute of the tag that is it's name? %>
+    <%# pretty sure it's tag.name in each record %>
+    <%# So then, how do I handle the article_path(article)? %>
+    <%# article_path creates the route to the....view? Hmm, I want the tag name to lead ..not the article path....but to the page that'll show all the articles that have that tag....so what am I trying to mimic here? %>
         <%= link_to article.title, article_path(article) %>
     </li>
     <% end %>
