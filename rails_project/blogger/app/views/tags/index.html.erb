@@ -4,7 +4,7 @@
 <ul class="articles">
     <% @tags.each do |tag| %>
     <li>
-        <%= link_to tag.name, article_path(:tags) %>
+        <%= link_to tag.name, tag_path(tag) %>
     </li>
     <% end %>
 </ul>

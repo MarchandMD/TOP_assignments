@@ -1,7 +1,7 @@
 #Am not going to be removing ApplicationRecord and adding ActiveRecord::Base
 class Article < ApplicationRecord
     has_many :comments
-    has_many :taggings
+    has_many :taggings, dependent: :destroy
     has_many :tags, through: :taggings
 
    def tag_list=(tags_string)

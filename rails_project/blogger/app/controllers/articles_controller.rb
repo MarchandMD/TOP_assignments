@@ -30,7 +30,6 @@ class ArticlesController < ApplicationController
     def update
         @article = Article.find(params[:id])
         @article.update(article_params)
-        # I had to finesse this a little.... i knew I wanted to inject the param[:title] into the flash.notice...but I didn't know how to access the right param. Thankfully the Rails error text pointed me to the problem...then it was a matter of looking within this action/method to figure how to grab the title from the hash. 
         flash.notice = "Article '#{article_params[:title]}' updated!"
         redirect_to action: :index
     end

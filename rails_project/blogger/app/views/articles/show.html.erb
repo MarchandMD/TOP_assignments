@@ -1,29 +1,3 @@
-<%# As embedded ruby, this is an html tag: <h1> and an erb tag %>
-<%# The erb tag is what's in the h1 tag; the equal sign indicates this Ruby code is to be output to the screen; so whatever instance variable shows up with the request will be given it's title and returned to the controller %>
-<%# The request for show.html.erb will come from the artices_controller, which is where all my work is happening in this tutorial; All the HTTP requests are coming in through the controller %>
-<%# In the articles_controller, the "show" action (which I could also call a "show" method, is defining the instance variable to be Article.find(params[:id]).....so I should break that down) %>
-<%# Article.find() is a find() call on the Article object. And what is the Article object? Well, it's the database, quite frankly. Or, in Rails speak, it's the model....%>
-<%# And how did I create the model? Rails has an automation command for that;  %>
-<%# I used the terminal command: bin/rails generate model Article %>
-<%# That's a big piece of it; I need to know how to create models, and what they do %>
-<%# creating the model did a couple of things; It created a lot of folders; Here are those folders:
- %>
- <%# 
-    1. db/migrate/(some_time_stamp)_create_articles.rb : A database migration to create the articles table
-    2. app/models/article.rb : The file that will hold the model code
-    3. test/models/article_test.rb : A file to hold unit tests for Article
-    4. test/fixtures/articles.yml : A fixtures file to assist with unit testing
- %>
-<%# 
-So, I'm not too concerned about the items 3 and 4 at the moment; those are tests...and I'm just trying to wrap my head around creating these things...not testing them. The tests will be taught later. 
-
-So the first two things are more of my focus right now. The first is "a database migration to create the articles table". Now I think it's important to note that Rails has this intuitiveness about it to know that an Article goes on the Articles table. It has this ability to look at a collection of things as plural, and a single item as singular. I don't know what the limitations of this are, or what the freedoms are it grants, so I'll keep this in mind as I become more capable with using tables. 
-
-The second thing the bin/rails generate model Artice command does is create a file in the app/models/ folder called article.rb...which holds the model code. 
-
-    ok, i want to do some actual work....
- %>
-
 <h1><%= @article.title %></h1>
 
 <p>
@@ -36,11 +10,10 @@ The second thing the bin/rails generate model Artice command does is create a fi
 
 <p><%= @article.body %></p>
 
-<%= link_to "delete", article_path(@article), method: :delete, data: {confirm: "Really delete the article?"} %>
+<%= link_to "delete", article_path(@article), method: :delete%>
 
 <h3>Comments: (<%= @article.comments.size%>)</h3>
 <%= render partial: 'articles/comment', collection: @article.comments%>
 <%= render partial: 'comments/form' %>
 <%= link_to "<< Back to Articles List", articles_path %>
-<%# Added a link to "edit".....so i can use the ruby helper method 'link_to'...then whatever textContent I want to show in quotes, a  comma, then let the link/text know where I want it to connect to; in this situation i'm saying edit_article_path...which edit_article is a Prefix from the bin/rails routes table....which shows me what the possible URL, HTTP paths are for the different type of requests.....I see that there is only one edit_article prefix, and that leads tot he Controller#Action of articles#edit....so after I edit, i'll need to use either the articles#update controller/action URI pattern....for either PATCH OR PUT...and they're the same format...they simply have different verbs %>
 <%= link_to "edit", edit_article_path(@article) %>
