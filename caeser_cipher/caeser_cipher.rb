@@ -4,8 +4,20 @@ def caeser_cipher(str, integer)
     array.collect do |number|
         if number == 32
             next
-        elsif number > 96 && number < 123 || number > 64 && number < 90
-            (number + integer).chr
+        elsif number > 96 && number < 123 
+            new_lcase_number = number + integer
+            if new_lcase_number > 122
+                new_lcase_number - 26
+            else
+                new_lcase_number
+            end
+        elsif number > 64 && number < 90
+            new_ucase_number = number + integer
+            if new_ucase_number > 122
+                new_ucase_number - 26
+            else
+                new_ucase_number
+            end
         end
     end
 
@@ -15,4 +27,5 @@ end
 
 
 
-puts caeser_cipher("What a string!", 5)
+print caeser_cipher("What a string!", 5)
+
