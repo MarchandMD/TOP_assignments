@@ -1,4 +1,4 @@
-How I arrived at this solution:
+How I arrived at the Caeser_Cipher solution:
 
 1. Convert the string to an array and unicode numbers as soon as possible
 
@@ -19,3 +19,5 @@ How I arrived at this solution:
 9. Do the same for uppercase, but DRY regarding logic evaluation
 
 10. join the array with the Array#join method
+
+
