@@ -60,5 +60,4 @@ module Enumerable
         self
     end
 
-
 end
