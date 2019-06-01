@@ -1,17 +1,10 @@
-//I don't know what the problem is. So the first thing I need to do is identify the bugs...
-//I get NaN frequently; How do i fix this? I need to look at the logic. Or maybe start from scratch?//Or take a look at what I have here, and use that as a starting point. 
-//Or maybe do the challenge again.
-
-
 const buttons = document.querySelectorAll('.button');
 const numericBtns = document.querySelectorAll('.numeric');
 const screen = document.querySelector('#screen');
 const operatorBtns = document.querySelectorAll('.operator');
 const enterBtn = document.querySelector('#enter');
 const clearBtn = document.querySelector('#clear');
-let digits = [];
-let operands = [];
-let result;
+let displayValue = [];
 let operation;
 
 buttons.forEach(button => {
@@ -25,27 +18,26 @@ buttons.forEach(button => {
 });
 
 clearBtn.addEventListener('click', () => {
-    digits = [];
+    displayValue = [];
     screen.textContent = 0;
-    operands = [];
+    myArray = [];
 })
 
 numericBtns.forEach(btn => {
-    btn.addEventListener('click', function (e) {
-        if (digits.length < 10) {
-            digits.push(parseInt(this.getAttribute('data-value')));
+    btn.addEventListener('click', function () {
+        if (displayValue.length < 10) {
+            displayValue.push(this.getAttribute('data-value'));
         }
-        screen.textContent = digits.join('');
+        screen.textContent = displayValue.join('');
     })
 })
 
-//!THIS IS FOR MOUSE CLICKS!!!!
+
 operatorBtns.forEach(btn => {
     btn.addEventListener('click', function () {
         operation = this.id;
-        operands.push(parseInt(digits.join('')));
-        digits = [];
-        console.log(operands);
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
     })
 })
 
@@ -70,94 +62,82 @@ function calculate(arr, str) {
 }
 
 
+myArray = [];
 
 
 
-//!THIS IS FOR MOUSE CLICKS ONLY
 enterBtn.addEventListener('click', () => {
-    operands.push(parseInt(digits.join('')));
-    result = calculate(operands, operation);
-    screen.textContent = result;
-    operands = [];
-    console.log(operands);
-
+    myArray.push(parseInt(displayValue.join('')));
+    screen.textContent = calculate(myArray, operation);
 });
 
 
-//!THIS IS FOR THE KEYPAD/KEYBOARD
+
 //*Adding eventListeners to keyboard
 document.addEventListener('keydown', function (e) {
     if (e.keyCode == 12) {
-        digits = [];
+        displayValue = [];
         screen.textContent = 0;
-        operands = [];
+        myArray = [];
     };
 
     if (e.keyCode == 107) {
         operation = "plus";
-        operands.push(parseInt(digits.join('')));
-        digits = [];
-        if (operands.length > 1) {
-            screen.textContent = calculate(operands, operation);
-        }
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
     }
     if (e.keyCode == 106) {
         operation = "times";
-        operands.push(parseInt(digits.join('')));
-        digits = [];
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
     }
     if (e.keyCode == 109) {
         operation = "minus";
-        operands.push(parseInt(digits.join('')));
-        digits = [];
-        console.log(`The operands are: ${operands}`);
-        console.log(`The operation is: ${operation}`);
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
     }
     if (e.keyCode == 111) {
         operation = "divide";
-        operands.push(parseInt(digits.join('')));
-        digits = [];
+        myArray.push(parseInt(displayValue.join('')));
+        displayValue = [];
     }
 
-    if (digits.length < 10) {
+    if (displayValue.length < 10) {
 
         if (e.keyCode == 13) { //Enter button
-            operands.push(parseInt(digits.join('')));
-            digits = [];
-            result = calculate(operands, operation);
-            screen.textContent = result;
-            //digits = [result.toString()];
-            operands = [];
-        } else if (e.keyCode == 96 || e.keyCode == 48) { //the zero buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            myArray.push(parseInt(displayValue.join('')));
+            //And also change the screen.textContent to the result of the calculate function;
+            screen.textContent = calculate(myArray, operation);
+        } else if (e.keyCode == 96 || e.keyCode == 48) { //the one buttons
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 97 || e.keyCode == 49) { //the one buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 98 || e.keyCode == 50) { //the two buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 99 || e.keyCode == 51) { //the three buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 100 || e.keyCode == 52) { //the four buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 101 || e.keyCode == 53) { //the five buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 102 || e.keyCode == 54) { //the six buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 103 || e.keyCode == 55) { //the seven buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 104 || e.keyCode == 56) { //the eight buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else if (e.keyCode == 105 || e.keyCode == 57) { //the nine buttons
-            digits.push(e.key);
-            screen.textContent = digits.join('');
+            displayValue.push(e.key);
+            screen.textContent = displayValue.join('');
         } else {
             return;
         }
