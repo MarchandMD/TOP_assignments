@@ -1,46 +1,50 @@
-const buttons = document.querySelectorAll('.button');
-const numberBtns = document.querySelectorAll('.number');
+
+const numberButtons = document.querySelectorAll('.number');
 const screen = document.querySelector('#screen');
 const operatorBtns = document.querySelectorAll('.operator');
 const enterBtn = document.querySelector('#enter');
 const clearBtn = document.querySelector('#clear');
 let displayValue = [];
 let operation;
+let operand_1;
 
-// buttons.forEach(button => {
 
-//     button.addEventListener('click', () => {
-//         button.classList.add('shake');
-//         setTimeout(function () {
-//             button.classList.remove('shake')
-//         }, 100);
-//     })
-// });
-
-//clear button functionality
-clearBtn.addEventListener('click', () => {
-    displayValue;
-    screen.textContent = 0;
-    myArray = [];
-})
-
-//Called .forEach on the numberBtns nodelist; each element is a btn
-numberBtns.forEach(btn => {
+//Called 'forEach' on the buttons nodelist; each element is a btn
+numberButtons.forEach(btn => {
     //add the 'click' event listener and an anonymous function
-    btn.addEventListener('click', function (e) {
-        //if the displayValue array is less than 10
-        if (displayValue.length < 10) {
-            //push the data-value attribute to the displayValue array
-            displayValue.push(this.getAttribute('data-value'));
-        }
-        //set the screen.textContent to the joined value of the   array. This seems strange. Why am I converting it to a string? Can I simply set the innerHTML?
-        screen.innerHTML = displayValue.join('');
-    })
+    btn.addEventListener('click', displayNumber)
 })
 
 function displayNumber() {
-    console.log("hello!")
+    if (displayValue.length < 10) {
+        displayValue.push(this.getAttribute('data-value'));
+    }
+    screen.innerHTML = displayValue.join('');
+    operand_1 = parseInt(screen.innerHTML);
 }
+
+
+
+//clear button "click" function
+// clearBtn.addEventListener('click', () => {
+//     displayValue;
+//     screen.textContent = 0;
+//     myArray = [];
+// })
+
+
+
+
+
+// function oldNumberButtonHandler(e) {
+//     //if the display is less than 10 characters long
+//     if (displayValue.length < 10) {
+//         //add the digit to the display of the calculator
+//         displayValue.push(this.getAttribute('data-value'));
+//     }
+//     //set the screen.textContent to the joined value of the  array. This seems strange. Why am I converting it to a string? Can I simply set the innerHTML?
+//     screen.innerHTML = displayValue.join('');
+
 
 //*disabled operator buttons
 // operatorBtns.forEach(btn => {
