@@ -9,6 +9,7 @@ let displayValue = [];
 let operation;
 let operand_1;
 let operand_2;
+let running_total = 0;
 
 
 //adding event listeners to each number
@@ -18,24 +19,40 @@ numberButtons.forEach(btn => {
 
 //handler function for clicking on numbers of calculator
 function displayNumber() {
-    if (displayValue.length < 10) {
+    if (displayValue.length < 10 && screenAbove.innerHTML == undefined) {
         displayValue.push(this.getAttribute('data-value'));
-    } else {return};
+    } else if (displayValue.length < 10 && screenAbove.innerHTML != undefined) {
+      displayValue.push(this.getAttribute('data-value'));
+    } else {console.log(operand_1)};
     screen.innerHTML = displayValue.join('');
 }
 
 //adding event listeners to operator buttons
 operatorBtns.forEach(btn => {
+
   btn.addEventListener('click', storeScreenAndOperation)
 })
 
 //handler function for clicking on operator buttons
 function storeScreenAndOperation() {
-  operation = this.getAttribute('data-value');
-  operand_1 = parseInt(screen.innerHTML);
-  screenAbove.innerHTML = operand_1;
-  displayValue = [];
-  screen.innerHTML = "0";
+  if (screenAbove.innerHTML == '') {
+    operation = this.getAttribute('data-value');
+    operand_1 = parseInt(screen.innerHTML);
+    screenAbove.innerHTML = operand_1;
+    displayValue = [];
+    screen.innerHTML = "";
+  } else {
+    console.log(operand_1);
+    console.log(operation);
+    operand_2 = parseInt(screen.innerHTML);
+    console.log(operand_2);
+    running_total = parseInt(operate(operation, operand_1, operand_2));
+    console.log(`The running total is: ${running_total}`);
+    screenAbove.innerHTML = running_total;
+    displayValue = [];
+    operand_1 = running_total;
+    console.log(operand_1);
+  }
 }
 
 //add event listener to Enter button
@@ -43,10 +60,11 @@ enterBtn.addEventListener('click', calculateAnswer);
 
 //handler function for Enter button
 function calculateAnswer() {
-  console.log(operand_1);
-  console.log(operation);
   operand_2 = parseInt(screen.innerHTML);
-  console.log(operand_2);
+  screen.innerHTML = operate(operation, operand_1, operand_2);
+  screenAbove.innerHTML = '';
+  displayValue = [];
+  console.clear();
 }
 
 myArray = [];
