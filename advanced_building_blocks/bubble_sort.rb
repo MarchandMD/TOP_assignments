@@ -17,7 +17,7 @@ def bubble_sort arr
     p answer.reverse
 end
 
-#bubble_sort [4,3,78,2,0,2]
+bubble_sort [4,3,78,2,0,2]
 
 def bubble_sort_by arr
     answer = []
