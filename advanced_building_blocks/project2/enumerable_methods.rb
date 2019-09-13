@@ -70,6 +70,10 @@ module Enumerable
     false
   end
 
+  #TEST FOR #my_any?
+  # numbers = [1, 2, 3, 4, 5, 6]
+  # p numbers.my_any? { |x| x != 4 }
+
   def my_none?
     i = 0
     while i < self.size
@@ -80,6 +84,10 @@ module Enumerable
     end
     true
   end
+
+  #TEST FOR #my_none?
+  # numbers = [1, 2, 3, 4, 5]
+  # p numbers.my_none? {|x| x.is_a?(String) }
 
   def my_count
     i = 0
@@ -97,6 +105,10 @@ module Enumerable
     self.size
   end
 
+  #TEST FOR #my_count
+  # strings = ["one", "two", "three", "four"]
+  # p strings.my_count
+
   def my_map
     i = 0
     new_array = []
@@ -107,12 +119,19 @@ module Enumerable
     new_array
   end
 
-  def my_inject(int)
-    i = 0
+  # numbers = [1, 2, 3, 4, 5, 6]
+  # p numbers.my_map { |x| "#{x} has been mapped" }
+  # p numbers
+
+  def my_inject?(memo = self[0])
+    i = 1
     while i < self.size
-      int = yield(int, self[i])
+      yield(memo, self[i])
       i += 1
     end
-    int
+    #final_value_of_memo
   end
+
+
+
 end
