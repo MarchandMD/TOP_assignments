@@ -8,6 +8,11 @@ module Enumerable
     self
   end
 
+  #TEST FOR #my_each
+  # [1,2,3,4].my_each do |x|
+  #  puts "#{x} and a.."
+  # end
+
   def my_each_with_index
     i = 0
     while i < self.size
@@ -16,6 +21,11 @@ module Enumerable
     end
     self
   end
+
+  #TEST FOR #my_each_with_index
+  # [1, 2, 3, 4].my_each_with_index do |x, i|
+  #   puts "#{i}. #{x} and a.."
+  # end
 
   def my_select
     i = 0
@@ -29,6 +39,11 @@ module Enumerable
     new_array
   end
 
+  #TEST FOR #my_select
+  # numbers = [1, 2, 3, 4, 5, 6]
+  # p numbers.my_select { |x| x.even? }
+  # p numbers
+
   def my_all?
     i = 0
     while i < self.size
@@ -39,6 +54,10 @@ module Enumerable
     end
     true
   end
+
+  #TEST FOR #my_all?
+  # numbers = [1, 2, 3, 4, 5]
+  # p numbers.my_all? { |x| x < 6 }
 
   def my_any?
     i = 0
