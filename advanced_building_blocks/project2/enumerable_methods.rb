@@ -124,16 +124,47 @@ module Enumerable
   # p numbers.my_map { |x| "#{x} has been mapped" }
   # p numbers
 
-#my_inject
-  def my_inject(initialValue = nil, symbol = nil)
-    if initialValue == nil
-      initialValue, *remaining_elements = self
-      remaining_elements.my_each { |num| initialValue = yield(initialValue, num) }
-      return initialValue
+  #my_inject
+  # def my_inject(initialValue = nil, symbol = nil)
+  #   if initialValue == nil
+  #     initialValue, *remaining_elements = self
+  #     remaining_elements.my_each { |num| initialValue = yield(initialValue, num) }
+  #     return initialValue
+  #   else
+  #     self.my_each { |num| initialValue = yield(initialValue, num) }
+  #     return initialValue
+  #   end
+  # end
+
+  ##taking the #my_inject method that works correctly, for edge cases
+  def my_inject(*args)
+    case args.length
+    when 1
+      if args[0].class == Symbol
+        memo = self[0]
+        self.my_each_with_index do |e, i|
+          next if i == 0
+          memo = memo.method(args[0]).call(e)
+        end
+      else
+        memo = args[0]
+        self.my_each do |e|
+          memo = yield(memo, e)
+        end
+      end
+    when 2
+      memo = args[0]
+      self.my_each do |e|
+        memo = memo.method(args[1]).call(e)
+      end
     else
-      self.my_each { |num| initialValue = yield(initialValue, num) }
-      return initialValue
+      memo = self[0]
+      self.my_each_with_index do |e, i|
+        next if i == 0
+        memo = yield(memo, e)
+      end
     end
+    memo
   end
 
   p [2, 3, 4].my_inject(1) { |memo, x| memo + x }
