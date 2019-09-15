@@ -119,19 +119,22 @@ module Enumerable
     new_array
   end
 
+  #TEST FOR #my_map
   # numbers = [1, 2, 3, 4, 5, 6]
   # p numbers.my_map { |x| "#{x} has been mapped" }
   # p numbers
 
-  def my_inject?(memo = self[0])
-    i = 1
-    while i < self.size
-      yield(memo, self[i])
-      i += 1
+#my_inject
+  def my_inject(initialValue = nil, symbol = nil)
+    if initialValue == nil
+      initialValue, *remaining_elements = self
+      remaining_elements.my_each { |num| initialValue = yield(initialValue, num) }
+      return initialValue
+    else
+      self.my_each { |num| initialValue = yield(initialValue, num) }
+      return initialValue
     end
-    #final_value_of_memo
   end
 
-
-
+  p [2, 3, 4].my_inject(1) { |memo, x| memo + x }
 end
