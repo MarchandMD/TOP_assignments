@@ -167,5 +167,5 @@ module Enumerable
     memo
   end
 
-  p [2, 3, 4].my_inject(1) { |memo, x| memo + x }
+  p [2, 3, 4].my_inject()
 end
