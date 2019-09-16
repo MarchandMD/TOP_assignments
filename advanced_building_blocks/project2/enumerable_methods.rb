@@ -139,7 +139,7 @@ module Enumerable
   ##taking the #my_inject method that works correctly, for edge cases
   def my_inject(initialValue = nil, symbol = nil)
     if initialValue != nil && symbol != nil
-      self.my_each { |e| initialValue = initialValue.method(symbol).call(e) }
+      self.my_each { |num| initialValue = initialValue.method(symbol).call(num) }
       initialValue
     elsif initialValue != nil && initialValue.is_a?(Symbol) && symbol == nil
       memo, *remaining_elements = self
@@ -155,5 +155,6 @@ module Enumerable
     end
   end
 
-  p [2, 4, 5].my_inject(:*)
+
+  p [2, 4, 5].my_inject("4")
 end
