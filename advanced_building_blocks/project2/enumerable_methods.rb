@@ -137,35 +137,23 @@ module Enumerable
   # end
 
   ##taking the #my_inject method that works correctly, for edge cases
-  def my_inject(*args)
-    case args.length
-    when 1
-      if args[0].class == Symbol
-        memo = self[0]
-        self.my_each_with_index do |e, i|
-          next if i == 0
-          memo = memo.method(args[0]).call(e)
-        end
-      else
-        memo = args[0]
-        self.my_each do |e|
-          memo = yield(memo, e)
-        end
-      end
-    when 2
-      memo = args[0]
-      self.my_each do |e|
-        memo = memo.method(args[1]).call(e)
-      end
-    else
-      memo = self[0]
-      self.my_each_with_index do |e, i|
-        next if i == 0
-        memo = yield(memo, e)
-      end
+  def my_inject(initialValue = nil, symbol = nil)
+    if initialValue != nil && symbol != nil
+      self.my_each { |e| initialValue = initialValue.method(symbol).call(e) }
+      initialValue
+    elsif initialValue != nil && initialValue.is_a?(Symbol) && symbol == nil
+      memo, *remaining_elements = self
+      remaining_elements.my_each { |num| memo = memo.method(initialValue).call(num) }
+      memo
+    elsif initialValue != nil && initialValue.is_a?(Integer) && symbol == nil
+      self.my_each { |num| initialValue = yield(initialValue, num) }
+      initialValue
+    elsif initialValue == nil && symbol == nil
+      initialValue, *remaining_elements = self
+      remaining_elements.my_each { |num| initialValue = yield(initialValue, num) }
+      initialValue
     end
-    memo
   end
 
-  p [2, 3, 4].my_inject()
+  p [2, 4, 5].my_inject(:*)
 end
