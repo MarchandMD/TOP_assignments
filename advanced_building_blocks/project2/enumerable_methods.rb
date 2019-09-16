@@ -155,6 +155,10 @@ module Enumerable
     end
   end
 
-
-  p [2, 4, 5].my_inject("4")
+  #TESTS FOR
+  #my_inject
+  #p [2, 4, 5].my_inject(1, :+)
+  #p [2, 4, 5].my_inject(:*)
+  #p [2, 4, 5].my_inject(2) { |memo, n| memo + n }
+  #p [2, 4, 5].my_inject { |memo, n| memo + n }
 end
