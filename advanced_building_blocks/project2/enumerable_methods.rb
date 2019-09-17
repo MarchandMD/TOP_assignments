@@ -109,6 +109,7 @@ module Enumerable
   # strings = ["one", "two", "three", "four"]
   # p strings.my_count
 
+  #my_map
   def my_map
     i = 0
     new_array = []
@@ -121,22 +122,13 @@ module Enumerable
 
   #TEST FOR #my_map
   # numbers = [1, 2, 3, 4, 5, 6]
-  # p numbers.my_map { |x| "#{x} has been mapped" }
+
+  #this_proc = Proc.new { |x| "#{x} has been mapped" }
+
+  #p numbers.my_map(&this_proc)
   # p numbers
 
   #my_inject
-  # def my_inject(initialValue = nil, symbol = nil)
-  #   if initialValue == nil
-  #     initialValue, *remaining_elements = self
-  #     remaining_elements.my_each { |num| initialValue = yield(initialValue, num) }
-  #     return initialValue
-  #   else
-  #     self.my_each { |num| initialValue = yield(initialValue, num) }
-  #     return initialValue
-  #   end
-  # end
-
-  ##taking the #my_inject method that works correctly, for edge cases
   def my_inject(initialValue = nil, symbol = nil)
     if initialValue != nil && symbol != nil
       self.my_each { |num| initialValue = initialValue.method(symbol).call(num) }
@@ -162,3 +154,9 @@ module Enumerable
   #p [2, 4, 5].my_inject(2) { |memo, n| memo + n }
   #p [2, 4, 5].my_inject { |memo, n| memo + n }
 end
+
+def multiply_els(arr)
+  arr.my_inject(:*)
+end
+
+p multiply_els([2, 4, 5])
