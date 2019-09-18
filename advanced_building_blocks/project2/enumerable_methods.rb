@@ -148,10 +148,10 @@ module Enumerable
 
   #TEST FOR #my_map
    numbers = [1, 2, 3, 4, 5, 6]
-   a_proc = Proc.new { |x| "#{x} has been mapped with a Proc" }
+   a_proc_as_a_variable = Proc.new { |x| "#{x} has been mapped with a Proc as a variable" }
   # p numbers.my_map(a_proc)
   # p numbers.my_map { |x| "#{x} has been passed a block, not the Proc" }
-   p numbers.my_map_three(a_proc) { |el| "#{el} has been mapeed with a naked block" }
+   p numbers.my_map_three(a_proc_as_a_variable) { |el| "#{el} has been mapeed with a naked block" }
 
   #my_inject
   def my_inject(initialValue = nil, symbol = nil)
