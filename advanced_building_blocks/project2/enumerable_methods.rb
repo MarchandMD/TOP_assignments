@@ -109,12 +109,38 @@ module Enumerable
   # strings = ["one", "two", "three", "four"]
   # p strings.my_count
 
-  #my_map
-  def my_map
+  #my_map: The first iteration (take a block)
+  # def my_map
+  #   i = 0
+  #   new_array = []
+  #   while i < self.size
+  #     new_array << yield(self[i])
+  #     i += 1
+  #   end
+  #   new_array
+  # end
+
+  #my_map: The second iteration (take a Proc object instead of a block)
+  # def my_map(&block)
+  #   i = 0
+  #   new_array = []
+  #   while i < self.size
+  #     new_array << block.call(self[i])
+  #     i += 1
+  #   end
+  #   new_array
+  # end
+
+  #my_map: The third iteration (take a Proc object or a block)
+  def my_map(param = nil)
     i = 0
     new_array = []
     while i < self.size
-      new_array << yield(self[i])
+      if param == nil && block_given?
+        new_array << yield(self[i])
+      elsif param != nil && block_given?
+        new_array << param.call(self[i])
+      end
       i += 1
     end
     new_array
@@ -122,11 +148,10 @@ module Enumerable
 
   #TEST FOR #my_map
   # numbers = [1, 2, 3, 4, 5, 6]
-
-  #this_proc = Proc.new { |x| "#{x} has been mapped" }
-
-  #p numbers.my_map(&this_proc)
-  # p numbers
+  # a_proc = Proc.new { |x| "#{x} has been mapped with a Proc" }
+  # p numbers.my_map(a_proc)
+  # p numbers.my_map { |x| "#{x} has been passed a block, not the Proc" }
+  # p numbers.my_map(a_proc) { |el| "#{el} has been mapeed with a naked block" }
 
   #my_inject
   def my_inject(initialValue = nil, symbol = nil)
@@ -159,4 +184,4 @@ def multiply_els(arr)
   arr.my_inject(:*)
 end
 
-p multiply_els([2, 4, 5])
+#p multiply_els([2, 4, 5])
