@@ -1,5 +1,6 @@
-# Odin_Project_coursework
+# TOP_Homework
 
-www.TheOdinProject.com
+I needed a place to save some random stuff from The Odin Project...so here it is!
 
-I've decided to use The Odin Project as a curriculum for learning web development, Ruby, Rails and most other things involved with web development. 
+Not really much for anyone to look at, but feel free to explore if you're so inclined.
+
