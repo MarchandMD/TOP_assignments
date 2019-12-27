@@ -19,3 +19,9 @@ bling = Hotness.new('on_fiya')
 serialized_hotness = YAML::dump(bling)
 
 puts serialized_hotness
+
+new_file = File.open('the_bling.yaml', 'w+')
+
+new_file.puts serialized_hotness
+
+new_file.close
