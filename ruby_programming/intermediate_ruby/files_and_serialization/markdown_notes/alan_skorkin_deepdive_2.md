@@ -98,3 +98,111 @@ From the article:
 
 >Serialization takes a Ruby object and converts it inot a string of bytes and vice versa.
 
+>Then, at the other end, the receiver has to unserialize the object, converting it back into something that Ruby can understand.
+
+Yes! This is what I don't get? How can I work with the data that has been serialized, after it has been unserialized? 
+
+## YAML
+So the example this article starts with...is a YAML file. And...
+
+Ok, I just spent like 5 - 10 minutes working out how to get the instance variable out of an object that I've imported in via YAML...but I still am unsure...I mean, I have access to it...but...I stil ahve some questions. 
+
+Like, If I am importing....what do I do? 
+
+I mean...how do I assign values to the instance variables and then start the game algorithm? 
+
+Well, after I load or read the File that has the Serialized information, I could then assign the `@temp` variable to 
+
+```ruby
+temp = my_imported_file.temp
+```
+
+like that...maybe. 
+
+And if I had more than one instance variable, I could do the same thing...
+
+So, I think that I've begun to get closer to understanding this serialization...or rather, I think what I need to understand is the de-serializiation...and that will make a difference. 
+
+so, if I create an object...
+
+```ruby
+class ThisObject
+  attr_accessor :count
+  
+  def initialize(count)
+    @count = count
+  end
+end
+```
+
+...and then I create an instance of that object...
+
+```ruby
+my_instance_of = ThisObject.new(44)
+```
+
+Then I know that I can access the instance variable of `@count` by doing
+
+```ruby
+my_instance_of.count
+#=> 44
+```
+
+And then if I serialize this object...
+
+```ruby
+serialized_instance = YAML.dump(my_instance_of)
+```
+
+...and write it to a file...
+	
+```ruby
+my_file = File.open('a_new_file.yaml', 'w+')
+my_file.puts serialized_instance
+```
+
+then I have a serialized object in the `a_new_file.yaml`.
+
+Now, if I de-serialize the object back into a program:
+
+```ruby
+deserialized = YAML.load File.read('a_new_file.yaml')
+```
+
+then I'll be able to call the `@count` instance variable on `deserialized object`...
+
+```ruby
+deserialized.count
+#=> 44
+```
+
+And that's a complete cycle of serialization, then to a file, and then from a file into a program, deserialization and then access of the instance variable. 
+
+And yeah, that's that. 
+
+So then I could either keep looking at the `YAML` class in the second article, or I can review the `JSON` section of the first article, and then also the "Binary serialization". 
+
+And I'd rather complete the article, rather than keep moving forard with 2...
+
+## A 3rd party alternative
+So, this article or this section of the article is about `JSON` so I know generally what the topic is about...
+
+>...if we don't want to resort to tricks...
+
+So, what tricks is he talking about? 
+
+So...i think this conversation has to go all the way back to the section when the author is discussing the act of serialization on a macro level...or a more standard sort of approach to serialization. Because, for the sake of example the author illustrated the idea of serialization with a single instance of a single class...right? 
+
+Well, truthfully the author used an example that was the serialization of a single instance of the `C` class, that included a single instance of the `A` and `B` class. So truthfully it was an example fo three classes, but it was actually only the serialization of one instance of a class. 
+
+So I guess there's some confusion around this idea. 
+
+Does the author serialize one class, or three classes? 
+
+Well, if I'm truthful, the author is only serializing a single instance of one class. 
+
+It is more "happen-stance" that the single instance of the `C` class is composed of instances of two other classes. But that's not necessarily indicative of the behavior of the actual serialization. Because that's what this article is about; and that's what I'm attempting to appreciate...this idea of serialization. 
+
+And the thing that's being serialized is an instance of a class. 
+
+
