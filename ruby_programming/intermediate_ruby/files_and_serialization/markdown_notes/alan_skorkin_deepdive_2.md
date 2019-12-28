@@ -70,4 +70,31 @@ but here's my question:
 
 Well, smartypants...I can pull it in to the program, can't I, with `File.open`? 
 
-Try that....
+Try that....hmm...ok, so this works within one program...but how about ending and storing the information, and then accessing it again? 
+
+I mean, it's not necessarily making much sense. But I guess I don't know what Im' really trying to do. 
+
+Well...I guess I do know what I was trying to do...I was trying to set the instance variable for a class to be the value of the saved/serialized object...
+
+So yeah, there's still somethign in this article thats missing...there's still somethign it's not covering. So I'm not going to stress to much, because I don't think the article is covering the thing I'm looking for. 
+
+So that means it's probably in a diferent artilce i"ll be looking at. 
+
+Move along, instead of getting hung up on this idea. 
+
+# A 3rd Party Alternative
+
+So Instead of looking more at JSON, I'm going to go to a different article, and review what it says about YAmL...and then come back to this article for the JSON...
+
+Ok, so something tells me I have to actually break down this article...because I've already done some skimming at it's been a little helpful up tot his point, so why don't I actually dig into the article? 
+
+# From the "choosing the right serialization method"
+
+>when saving or communicating some kind of information...
+
+"communicating"...i think is like the idea of sending information via an API...because that's how Ive seen data be transmitted before...so "communication" is an acronym for "transmission"...
+
+From the article: 
+
+>Serialization takes a Ruby object and converts it inot a string of bytes and vice versa.
+

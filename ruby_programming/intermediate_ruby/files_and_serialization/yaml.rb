@@ -14,6 +14,8 @@ my_serialized_thing = YAML::dump(test_hash)
 # puts my_serialized_thing
 
 class Hotness
+
+  attr_reader :temp
   def initialize(temp)
     @temp = temp
   end
