@@ -11,7 +11,7 @@ test_hash = {
 
 my_serialized_thing = YAML::dump(test_hash)
 
-puts my_serialized_thing
+# puts my_serialized_thing
 
 class Hotness
   def initialize(temp)
@@ -19,15 +19,14 @@ class Hotness
   end
 end
 
-bling = Hotness.new('on_fiya')
+bling_2 = Hotness.new('ice_cold')
 
-serialized_hotness = YAML::dump(bling)
+serialized_hotness = YAML::dump(bling_2)
 
 puts serialized_hotness
 
-new_file = File.open('the_bling.yaml', 'w+')
+new_file = File.open('the_bling_2.yaml', 'w+')
 
 new_file.puts serialized_hotness
-new_file.puts my_serialized_thing
 
 new_file.close
