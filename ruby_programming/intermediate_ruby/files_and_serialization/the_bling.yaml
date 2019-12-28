@@ -1,2 +1,7 @@
 --- !ruby/object:Hotness
-temp: ice_coldse
+temp: on_fiya
+---
+thing1: hello
+thing2: there
+:what: third
+:about: this

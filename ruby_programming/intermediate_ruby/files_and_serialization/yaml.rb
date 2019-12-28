@@ -2,9 +2,14 @@
 
 require 'yaml'
 
-test_arr = [1, 2, 3, 4, 5]
+test_hash = {
+  'thing1' => "hello",
+  'thing2'=> "there",
+  what: "third",
+  about: "this"
+}
 
-my_serialized_thing = YAML::dump(test_arr)
+my_serialized_thing = YAML::dump(test_hash)
 
 puts my_serialized_thing
 
@@ -23,5 +28,6 @@ puts serialized_hotness
 new_file = File.open('the_bling.yaml', 'w+')
 
 new_file.puts serialized_hotness
+new_file.puts my_serialized_thing
 
 new_file.close
