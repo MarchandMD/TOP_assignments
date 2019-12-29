@@ -205,4 +205,123 @@ It is more "happen-stance" that the single instance of the `C` class is composed
 
 And the thing that's being serialized is an instance of a class. 
 
+So, I don't really know what it is I'm attempting to do....I mean, really what I think I'm doing is trying to understand what happens when I am serializing a single object that is actually composed of 2 other objects....But what is it I'm trying to achieve? I'm trying to prove something...but I just don't know what it is. 
+
+So where is my confusion? What about this idea am I struggling with? 
+
+Well, I'm serializing a single object...and that's an instance of the `C` object...but I know that when I "dump" the object into `YAML`...that I'm "serializing" the data...into the `YAML` form...but what aobut that si confusing or difficult for me? 
+
+What about it am I not understanding? 
+
+I think what I want to know is....what does the "yamlized" stuff look like? 
+
+If I serialize a string, what happens?   
+IF I serialize an Array, what happens?   
+If I serialize a Hash, what happens?  
+Because a simple 'string' is an instance of the `String` class...
+
+because I think what I'm not learning or what I'm not seeing...is the separation between 'serialization' and the creation of a file that contains the data. 
+
+Becuase I can actually work in YAML without creating a file. 
+
+Ok, so converting a string to YAML is done like this: 
+
+```ruby
+require 'yaml'
+
+test_string = "this is a test"
+
+puts YAML.dump test_string
+```
+
+And this will output
+
+```ruby
+--- this is a test
+=> nil
+```
+
+but the actual object returns this: 
+
+```ruby
+YAML.dump test_string
+=> "--- this is a test\n"
+```
+
+So converting a `String` instance to `YAML` will create a string that is actually `YAML`...
+
+I mean, the first thing will simply be denoted with triple dashes, and end with a newline. 
+
+Ok, then lets test an `Array`....
+
+so, this is how YAML will behave in this situation...
+
+```ruby
+"---\n- one\n- two\n- three\n- four\n- five\n"
+```
+
+So, `YAML`  will do different thiings in different situation...depending on the *type* of object that is being serialized...
+
+Next...let's take a look at a `Hash`...
+
+Ok, so now I know the behavior of `YAML` when it's serializing a String, an Array and a Hash. 
+
+What about a custom object? 
+
+Well, here we go: 
+
+```ruby
+class HockeyPlayer
+  attr_accessor :goals
+  
+  def initialize(goals)
+  @goals = goals
+  end  
+end
+
+shooter = HockeyPlayer.new(0)
+
+YAML.dump shooter
+=>"--- !ruby/object:HockeyPlayer\ngoals: 100\n" 
+```
+
+But this is a little easier to grasp if I "puts" it...
+
+
+```ruby
+--- !ruby/object:HockeyPlayer
+goals: 100
+=> nil
+```
+
+So, for a custom object, what `YAML` will do is...
+
+```ruby
+--- !ruby/object:HockeyPlayer
+```
+
+`YAML` will place an exclamation point and then the name of the language, a slash, and then the actual word "object" followed by a colon and then the actual name of the customized class followed by a new line....
+
+Then `YAML` will list the instance variables, a colon, and the value of the instance variable.
+
+```ruby
+goals: 100
+=> nil
+```
+
+And that's how `YAML` will display a customized class. 
+
+So now that I know how `YAML` will display a customized class, I wonder what I can make of the example from the article. 
+
+But before I do that, I want to acknowledge that I'd like to attempt to run a game with a single pre-determined instance variable. 
+
+So this includes me knowing how to intantiate the game without a pre-determined instance variable. 
+
+And then it requires me to instantiate a game with a single pre-determined instance variable. 
+
+I feel like that might be the way to "loading" a game...
+
+Then it's a matter of turning that pre-determined instance variable into the de-serialized data. 
+
+
 
