@@ -1,4 +1,4 @@
-Ruby Programming > A Bit of Computer Science > 2. Recursive Methods
+# Ruby Programming > A Bit of Computer Science > 2. Recursive Methods
 
 Learning outcomes: 
 * Why is recursion a useful technique for solving a big problem?
@@ -92,3 +92,15 @@ The roman numeral problems also look familiar....like they also come from that b
 1. <https://en.wikipedia.org/wiki/Factorial>  
 2. <https://www.sitepoint.com/functional-programming-techniques-with-ruby-part-iii/>
 3. [fibonnacci sequences](https://www.natashatherobot.com/recursion-factorials-fibonacci-ruby/)
+
+Um, ok, what else? I mean...I feel like this article is more about getting me into the subject. And I am very tangentially getting into it. 
+
+Because I feel like it might be quick...but I'm not sure. 
+
+And I know there's a lot of other things I want to continue to do. 
+
+I think this is one of those times...when I'm in between topics...that I sort of float a little bit. Adn I don't know that I really want to be floating. I want to be knee-deep in something. I want to be absorbed and consumed in a subject.
+
+But that comes and goes. I mean, i feel proud of the Hangman game I created. And I realize I did create a "save" feature.....but really the point was to teach me about serialization. But it's one of those tools that if I don't find a way to use it more frequently, I don't know that I'll be comfortable with it. 
+
+But look at it like this....if I want to, I'll find a way to do it. I mean, this is the point. i don't need to keep driving ahead. But I sort of want to. I mean, this is a familiar conversation I've had. 
