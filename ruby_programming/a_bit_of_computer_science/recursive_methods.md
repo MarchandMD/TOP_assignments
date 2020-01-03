@@ -103,4 +103,14 @@ I think this is one of those times...when I'm in between topics...that I sort of
 
 But that comes and goes. I mean, i feel proud of the Hangman game I created. And I realize I did create a "save" feature.....but really the point was to teach me about serialization. But it's one of those tools that if I don't find a way to use it more frequently, I don't know that I'll be comfortable with it. 
 
-But look at it like this....if I want to, I'll find a way to do it. I mean, this is the point. i don't need to keep driving ahead. But I sort of want to. I mean, this is a familiar conversation I've had. 
+But look at it like this....if I want to, I'll find a way to do it. I mean, this is the point. i don't need to keep driving ahead. But I sort of want to. I mean, this is a familiar conversation I've had....
+
+So then, how do i get into this? 
+
+By going through the articles, slowly. I already made that choice earlier. 
+
+So that's the next thing...to start the next file for the next article...because I'm pretty sure this file was just to get me orientated to what is coming up, and what to be on the look out for.
+
+So I'll move on to the first article, which is back to the Bastards Book of Ruby.....
+
+And I've already read it once. But I'm going to take more notes about it now. 
