@@ -155,3 +155,7 @@ It may be confusing, but it's programming. It's not easy. Well, it's not difficu
 Ok dude, whatever. Just build. 
 
 You got it! :)
+
+# step 6: stop your brain from going to fast, and focus on the `#get_input` method...
+
+So, instead of worrying about the second method that I started thinking about, I'm going to focus on the `#get_input` method..
