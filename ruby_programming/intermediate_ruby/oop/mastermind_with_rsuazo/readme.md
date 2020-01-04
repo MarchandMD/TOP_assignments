@@ -200,3 +200,77 @@ def get_input
     end
   end
 ```
+
+So this seems complete. But now, I want to test this method. 
+
+## Testing (the hard way) in terminal
+
+Slow your brain down, and test the program in `irb`..
+
+Oh man. `irb`?! I hardly know what that is. 
+
+That's ok...it's short for: interactive ruby shell...or something like that. I'm no expert. Maybe just 'interactive ruby'...
+
+But what is it? 
+
+It's a way to emulate (or pretend taht you are) inside a Ruby engine.
+
+What the heck is a Ruby engine? 
+
+It's a program that allows a Ruby script to be run. Go back to sleep....
+
+IRB essentially is the RUBY ENGINE, running super slowly. When the say a computer program is capable of doing this super fast...the Engine is the thing that's doing the computing. Maybe. Sort of, I don't really know. That's just how I've been thinking about it while I use it, and it seems to help me. 
+
+so to test this `Game#get_input` method the hard way, I run irb
+
+```
+irb
+irb(main):001:0> 
+```
+
+So, since I launched IRB from the same working directory that I'm building in, I can `require_relative`...because I'm essentially  **IN A RUBY SCRIPT WHEN I'M IN IRB**...
+
+```
+irb(main):001:0> require_relative 'main'
+=> true
+```
+
+Hey, why didn't you include the `.rb`? 
+
+Because I didn't have to that's why. 
+
+Why not? 
+
+That's a good question! I mean, that's a good question for some situations, like: Why not try something new? Why not try a different emotion? Why not break this cycle? Why not eat healthier? Why not think for myself? 
+
+but in other situations, this is a shitty question.  
+
+What I'm getting at is: sometimes there are good questions to ask, and sometimes there are bad questions to ask. Here's a nice little saying I'd like to invoke at this time: 
+
+> never ask a question you don't already know the answer to
+
+or
+
+> try to answer your own question, before asking it aloud
+
+So, maybe the reason I didn't include the `.rb` in the `require_relative` call, was because in this situation it wasn't necessary. And I'll keep this in mind for future situations. Not the front of my mind, but the back of my mind. 
+
+Got it. 
+
+```
+irb(main):002:0 > game = Game.new
+=>#<Game:0x003fdgre554434345>
+irb(main):003:0? game.get_input
+Would you like to (m)ake the code or (b)reak the code? 
+```
+
+Ok, cool, so at this point, you should be able to test this method in the terminal, and be certain that it won't break. 
+
+Yep! Awesome! Nice work! But...um...I have a question, and I'm a little timid because I don't know the answer to it...
+
+that's ok! That means it's a good question!  
+
+Ok: So, if this is testing "The hard way...." How do I test the "easy way"? 
+
+Nice! I like "how" questions! There much easier to approach. 
+
