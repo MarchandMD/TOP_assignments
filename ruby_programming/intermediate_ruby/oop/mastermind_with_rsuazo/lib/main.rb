@@ -12,13 +12,12 @@ class Game
     prompt_user_to_make_or_break == 'b' ? break_the_code : 'making the code'
   end
 
-  def prompt_user_to_make_or_break
+  def prompt_user_to_make_or_break(input = nil)
     puts 'Would you like to (m)ake the code or (b)reak the code?'
     loop do
-      input = gets.chomp.downcase
+      input ||= gets.chomp.downcase
       if input == 'm'
         puts 'you will make the code'
-        # will change this later
         break
       elsif input == 'b'
         puts 'you will break the code'
@@ -27,6 +26,7 @@ class Game
         puts 'invalid entry; only (m) or (b) are valid entries'
       end
     end
+    input
   end
 
   def break_the_code
