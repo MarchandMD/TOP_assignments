@@ -114,3 +114,44 @@ Awesome. Progress.
 so what happens if I run this? Nothing, obviously. 
 
 So then, what? 
+
+Well, then I need to start populating the `#get_input` method with some Ruby code. 
+
+Now, at this point, my brain has started to tell me a little bit more about something else in my code...specifically, the last two lines.
+
+Just having an instance of the `Game` class won't really help me....I'll need to **do something** to the instance of the `Game` class to make something happen. 
+
+And what is that **do something** that I'll need to do? 
+
+I'll need to call a method on the instance of the `Game` class. 
+
+But wait...I though i was already creating a method? the `#get_input` method...
+
+That's right! We are. 
+
+But what I'm thinking about, still, is making this program as easy as possible. Because i'm "lazy"...in the sense of a programmer. 
+
+What do you mean? 
+
+I mean...yes: I am writing a method `#get_input`...but what is that going to do? 
+
+Well, that's going to get input from the user, asking if they want to "make the code or break the code"...
+
+Exactly. But to make the method work, i'll need to **call the method**....
+
+I also know that I'll most likely have more than one method in the class...and how will I make those other methods work? 
+Ummm....
+
+By **calling the method**. If I make a method, I'll need to call a method. 
+
+But I don't want to have to call every method every time. 
+
+So what I'm thinking about, is a second method...
+
+BUT WAIT! you haven't even written the body of the first `#get_input` method! Why the heck are you already thinking about a second method?! this is so confusing. 
+
+It may be confusing, but it's programming. It's not easy. Well, it's not difficult, but it's not easy either. It just..is..
+
+Ok dude, whatever. Just build. 
+
+You got it! :)
