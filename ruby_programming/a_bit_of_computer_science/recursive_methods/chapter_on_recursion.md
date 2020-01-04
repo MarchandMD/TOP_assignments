@@ -30,3 +30,14 @@ And I think I may want to go back and dig a little deeper into this Wikipedia pa
 So right away the author is giving me some fodder to have some disdain for the idea of recursion. I mean, it's a certain strucutre of an algorithm...but so are loops. And loops might be just as effective, if not faster. So then why am I so concerned with the recursive algorithm? Why is a design pattern necessary? 
 
 
+I mean, i think the idea of design patterns is a step up in the abstraction world...I think that having a grasp on the language is one thing...but being able to think about programs at another level is another step in the progress of program design. 
+
+Will it make writing programs easier? 
+
+I mean, I want to argue that the only thing that'll make writing programs easier is writing more programs. But that requries taking time to plan...a litle bit...yeah? Maybe. 
+
+back to the article....
+
+I don't really know what is meant by this "divide-and-conquer" idea...and I know it comes from a different article...
+
+And so since my curiosity keeps getting snagged by the phrase 'divide-and-conquer' i'm going to spend some more time with the other article. 
