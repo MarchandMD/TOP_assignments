@@ -68,6 +68,7 @@ class Game
     else
       puts "You guessed #{correct_colors} correct colors"
     end
+    correct_colors
   end
 
   def try_again
