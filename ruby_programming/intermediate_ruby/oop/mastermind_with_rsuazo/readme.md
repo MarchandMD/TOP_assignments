@@ -178,3 +178,25 @@ At this point in the development, I also know that I need to get input from the 
 **Hey wait!!** What if the user types something besides 'b' or 'm'?!
 
 Impetuous, you are. I was just going to say: My brain is thinking about the problem if the user types something besides a 'b' or an 'm'...I need to "validate" the input. And I don't want to have to call the method everytime I need input from the user. So i'll create a validation loop (I don't know if that's an actual thing)
+
+Now stay with me, because I'm going to add what looks like a lot of code...but it's really no more than an `if-else` statement inside of a `loop`...at this point in the curriculum, this sort of hting should scare you. If it does, you might be going to fast, and may need to slow down a little bit. Or keep pushing forward. It's your call...
+
+```ruby
+def get_input
+    puts "Would you like to (m)ake the code or (b)reak the code?"
+    loop do
+      input = gets.chomp.downcase
+      if input == "m"
+        puts "you will make the code"
+        # will change this later
+        break
+      elsif input == "b"
+        puts "you will break the code"
+        # will change this later
+        break
+      else
+        puts "invalid entry; only (m) or (b) are valid entries"
+      end
+    end
+  end
+```
