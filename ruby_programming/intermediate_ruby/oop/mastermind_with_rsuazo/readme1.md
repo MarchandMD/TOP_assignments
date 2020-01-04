@@ -44,5 +44,51 @@ I don't know that I follow, but I don't really know what the other two methods a
 
 I'll tell you, they're `make` and `break`.  Or as you should get used to seeing them: `#make` or `#break`... which is like a short hand for writing `Game#make` or `Game#break`...
 
+Will you please explain how the `#get_input` method will be connected to the `#make` or `#break` method?  
 
+Gladly! 
+
+So, depending on the input from the user within the `#get_input` method, I can add more code...such as a call to a method, like `#make` or `#break`. And viola! The two methods are now "inter-twined"! I'm calling one method from within another method. 
+
+But what about scope?  
+
+What about it?  
+
+Well, there's a thing called scope, and I know that it exists....
+
+yeah..but what's your real question?  
+
+Well, won't scope stop the method from running?  
+
+Why would it do that? 
+
+I don't know...because I know scope is a thing, and sometimes that's what it does....  
+
+Ok...well, again, I feel like a brain will look for problems before they're problems. So until a thing is a problem, let's not fix non-existent problems. 
+
+Ok. But I don't like your attitude at this point. You're a little condescending...  
+
+Opinions..
+
+## intermingling the `Game#make` and `Game#break` method with `Game#get_input` method
+
+```ruby
+def get_input
+    puts "Would you like to (m)ake the code or (b)reak the code?"
+    loop do
+      input = gets.chomp.downcase
+      if input == "m"
+        puts "you will make the code"
+        make_the_code
+        break
+      elsif input == "b"
+        puts "you will break the code"
+        break_the_code
+        break
+      else
+        puts "invalid entry; only (m) or (b) are valid entries"
+      end
+    end
+  end
+```
 
