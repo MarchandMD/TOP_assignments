@@ -23,7 +23,6 @@ class Game
         break
       else
         puts "invalid entry; only (m) or (b) are valid entries"
-        input = gets.chomp.downcase
       end
     end
     input
@@ -77,5 +76,3 @@ class Game
 
 end
 
-instance_of_game_class = Game.new
-instance_of_game_class.play
