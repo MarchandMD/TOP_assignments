@@ -274,3 +274,17 @@ Ok: So, if this is testing "The hard way...." How do I test the "easy way"?
 
 Nice! I like "how" questions! There much easier to approach. 
 
+## How do I test "the easy way"?
+
+to answer the question generally, and succinctly: Rspec  
+
+I don't get it....  
+
+I'll be more specific: 
+
+We can do the same thing we do running IRB, by using RSpec. If we can make a method work in RSpec, then we can have **100% undeniable certainty that the method will work in irb, and therefore Ruby**.  
+
+Now that's not to suggest that the entire program will be flawless; just that one part of the program. But it's a start..
+
+## end of readme
+Ok, so this page is becoming unwieldy. It's a large file, and a lot to read. and I think I want to organize this a little better. So i'm goign to attempt to add a second readme file. Or maybe I need to build a static website...I don't really know. 
