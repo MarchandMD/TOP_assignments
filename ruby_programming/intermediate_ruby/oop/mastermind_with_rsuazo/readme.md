@@ -288,3 +288,5 @@ Now that's not to suggest that the entire program will be flawless; just that on
 
 ## end of readme
 Ok, so this page is becoming unwieldy. It's a large file, and a lot to read. and I think I want to organize this a little better. So i'm goign to attempt to add a second readme file. Or maybe I need to build a static website...I don't really know. 
+
+I think I'd prefer to just keep writing markdown files, (`.md`) so I'm going to continue in `readme1.md`
