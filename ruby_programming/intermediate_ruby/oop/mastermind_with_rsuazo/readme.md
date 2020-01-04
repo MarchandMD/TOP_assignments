@@ -159,3 +159,22 @@ You got it! :)
 # step 6: stop your brain from going to fast, and focus on the `#get_input` method...
 
 So, instead of worrying about the second method that I started thinking about, I'm going to focus on the `#get_input` method..
+
+Oh thank god! I was starting to get discouraged!
+
+```ruby
+def get_input
+  puts "Would you like to (m)ake the code or (b)reak the code?"
+end
+```
+So, for getting user input, i've learned that
+
+#### Less is More
+
+Now don't get me wrong, I think that humans are great things, and we have a lot to contribute...but when it comes to a simple computer program...I want to exert as much control as I can, because I want to make things easier for myself. I do this by being specific about what the user can provide to the program. I really like the `(m)ake` sort of style of prompts...I feel like it's an elegant way to let the user know: "these are your choices". 
+
+At this point in the development, I also know that I need to get input from the user. But my brain, since it likes to find problems were they don't exist, is already thinking about...
+
+**Hey wait!!** What if the user types something besides 'b' or 'm'?!
+
+Impetuous, you are. I was just going to say: My brain is thinking about the problem if the user types something besides a 'b' or an 'm'...I need to "validate" the input. And I don't want to have to call the method everytime I need input from the user. So i'll create a validation loop (I don't know if that's an actual thing)
