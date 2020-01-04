@@ -12,7 +12,7 @@ class Game
   def play
     prompt_user_to_make_or_break == "b" ? prompt_user_for_guess : "making the code"
     get_guess
-    validate_guess(user_guess, colors) == true ?  comparing_answer : try_again
+    validate_guess(user_guess, colors) == true ?  comparing_answer(user_guess, secret_code) : try_again
   end
 
   def prompt_user_to_make_or_break(input = nil)
@@ -59,8 +59,16 @@ class Game
     true_values.all?(true) ? true : false
   end
 
-  def comparing_answer
-    puts "comparing your answer against the secret code"
+  def comparing_answer(the_guess, secret_code_arr)
+    guess_as_array = the_guess.split('')
+    correct_colors = 8 - (secret_code_arr + guess_as_array).uniq.length
+    if correct_colors == 4
+      puts "Nice! You guessed all the correct colors"
+    elsif correct_colors == 0
+      puts "You guessed none of the right colors"
+    else
+      puts "You guessed #{correct_colors} correct colors"
+    end
   end
 
   def try_again
