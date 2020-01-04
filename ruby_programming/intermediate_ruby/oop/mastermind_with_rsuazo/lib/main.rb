@@ -12,7 +12,7 @@ class Game
   def play
     prompt_user_to_make_or_break == "b" ? prompt_user_for_guess : "making the code"
     get_guess
-    puts validate_guess(user_guess, colors) == true ? "nice" : "bad"
+    validate_guess(user_guess, colors) == true ?  comparing_answer : try_again
   end
 
   def prompt_user_to_make_or_break(input = nil)
@@ -58,6 +58,15 @@ class Game
     end
     true_values.all?(true) ? true : false
   end
+
+  def comparing_answer
+    puts "comparing your answer against the secret code"
+  end
+
+  def try_again
+    puts "you need to try again"
+  end
+
 end
 
 instance_of_game_class = Game.new
