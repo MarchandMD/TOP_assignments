@@ -299,3 +299,50 @@ def validate(choices, possible_colors)
   end
 ```
 
+Ok, so now, what I see is, I need to clean up my `#break_the_code` method...
+
+
+So what am I trying to do? 
+
+I think I'm doing a couple of different things, and I'm confusing myself. 	
+
+So what I want to do is go a couple of steps back...
+
+At this point what do I definitely have in the program? 
+
+I can instantiate an instance of the `Game`...it has a `@secret_code` that I can work with.
+
+Wow, ok...I actually have a lot mroe than I would have expected. 
+
+I can call `Game#get_input` and it will do a couple of things. 
+
+But I don't like the way it works.
+
+It's too...interconnected. 
+
+I want to employ the idea of **ENCAPSULATION** a little bit more. I want to compartmentalize things. 
+
+I mean, I like the idea of the `#get_input` but that's not really what the method is doing. It's actually doing more than `#get_input`...it's running the entire game....
+
+And this get's back to that idea of the original "second" method I was thinking about...
+
+After I've instantiated an instance of the game, I only want to call one method....that will store other methods in it. 
+
+So this is sort of like the Engine that will help keep things striaght in my own mind...
+
+```ruby
+def play
+  prompt_user_to_make_or_break
+end
+```
+
+Ok, now, I want to add another method to the `play` method...
+
+```ruby
+def play
+  prompt_the_user_to_make_or_break
+  break_the_code
+end
+```
+
+so then if I call the play method...

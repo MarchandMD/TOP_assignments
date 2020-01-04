@@ -7,7 +7,12 @@ class Game
     @secret_code = @colors.sample(4)
   end
 
-  def get_input
+  def play
+   prompt_user_to_make_or_break
+   break_the_code
+  end
+
+  def prompt_user_to_make_or_break
     puts "Would you like to (m)ake the code or (b)reak the code?"
     loop do
       input = gets.chomp.downcase
@@ -17,7 +22,6 @@ class Game
         break
       elsif input == "b"
         puts "you will break the code"
-        break_the_code
         break
       else
         puts "invalid entry; only (m) or (b) are valid entries"
