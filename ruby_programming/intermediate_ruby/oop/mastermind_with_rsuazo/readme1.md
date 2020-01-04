@@ -369,4 +369,39 @@ end
 
 Ok, so then what the hell does this do? 
 
-Well, test it, the hard 
+Well, test it, the hard way...
+
+But I"m not going to, because I know what will happen. 
+
+The `#break_the_code` method will run if I type in "b", ...
+
+Umm...I want to accelerate my progress...
+
+and there are other ways to follow along...so i'm going to focus on simply creating at this point....
+
+ok, so now that I've setup RSpec..what do I want to do now? 
+
+I want to focus on the `#play` method...
+
+
+So, now, my logic works better..because I've setup the `#prompt_the_user_to_make_or_break` method to return a single character `String`...either a `b` or an `m`. If it returns a `b` i'll run the `#break_the_code` method. 
+
+If it doesn't return a `b`...I'll just print something like "Make the code"...for now...
+
+so, now that I have some logic built into the `#play` method...I could do something else....
+
+so what am I trying to do? 
+
+my `#break_the_code` method is way to big right now...
+
+I need to shrink it down...
+
+
+So I want the `#break_the_code` to do less...
+
+I actually just want it to produce some input....
+
+so yeah...I think I want to separate things as much as possible...I mean I can remove some of this from some of the rest of this...
+
+
+Hmm, my RSpec isn't working properly. 
