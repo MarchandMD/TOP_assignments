@@ -12,7 +12,7 @@ class Game
   def play
     prompt_user_to_make_or_break == "b" ? prompt_user_for_guess : "making the code"
     get_guess
-    validate_guess(user_guess, colors) == true ?  comparing_answer(user_guess, secret_code) : try_again
+    validate_guess(user_guess) == true ?  comparing_answer(user_guess, secret_code) : try_again
   end
 
   def prompt_user_to_make_or_break(input = nil)
@@ -47,15 +47,8 @@ class Game
     @user_guess = input
   end
 
-  def validate_guess(string, arr)
-    guess_as_array = string.split('')
-    i = 0
-    true_values = []
-    while i < guess_as_array.length
-      true_values << arr.include?(guess_as_array[i])
-      i += 1
-    end
-    true_values.all?(true) ? true : false
+  def validate_guess(string)
+    string
   end
 
   def comparing_answer(the_guess, secret_code_arr)

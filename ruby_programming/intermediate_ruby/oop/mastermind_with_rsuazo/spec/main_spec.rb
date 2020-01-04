@@ -23,4 +23,12 @@ RSpec.describe Game do
       expect(game.comparing_answer(the_guess, the_code)).to be_an(Integer)
     end
   end
+
+  context "#validate_guess" do
+    it "validates the guess" do
+      game = Game.new
+      a_string = "royg"
+      expect(game.validate_guess(a_string)).to eq("yes")
+    end
+  end
 end

@@ -405,3 +405,24 @@ so yeah...I think I want to separate things as much as possible...I mean I can r
 
 
 Hmm, my RSpec isn't working properly. 
+
+
+Ok, so now I got RSpec to work correctly...and it's so much easier to develop now....
+
+
+because I have so much more control and feedbak from the program...
+
+And I'm looking at my `#validate_guess` method...
+
+And I don't think I like it...because I think I want the `#get_guess` method to do all the validation. I don't want there to be two pieces of validation. I want validation to happen all at once. 
+
+Becasue what do I need to validate? 
+
+1. if the input is 4 characters or not
+2. if the input is 4 characters, are they all permissible characters? 
+
+So that seems to set it up pretty well for me
+
+either it's 4 characters or not...
+
+so do that first...which I htink I already have, in teh `#get_guess` method...
