@@ -1,0 +1,1 @@
+this is a mastermind program built in a single file, in collaboration with [rSuazo](https://github.com/rsuazo)
