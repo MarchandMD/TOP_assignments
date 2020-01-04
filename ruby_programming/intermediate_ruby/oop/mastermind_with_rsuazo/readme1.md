@@ -346,3 +346,27 @@ end
 ```
 
 so then if I call the play method...
+
+one method is run, then the second method is run. 
+
+But even if I chose to `m` the code during the `prompt_the_user_to_make_or_break`...what happens? 
+
+Well, looking at the code for the `#play` method, I see that first the `#prompt_the_user_to_make_or_break` method will be called to completion. 
+
+Then the `#break_the_code` method will be called to completion. 
+
+so then my question is: 
+
+How do I create some logic to control the flow of the code? 
+
+How can I write a statement in the `#play` method that will sometimes call the `#break_the_code` method, and other times call something else? 
+
+```ruby
+def play
+   prompt_the_user_to_make_or_break == "b" ? break_the_code : make_the_code
+end
+```
+
+Ok, so then what the hell does this do? 
+
+Well, test it, the hard 
