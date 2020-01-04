@@ -66,3 +66,51 @@ so then the question is:
 > What do I want the game to do, specifically? 
 
 And of course the question was easy to answer before I added that last word: **specifically**
+
+The easy answer is: I want the game to welcome the player to the game, and I want to give some instructions on how to play the game. 
+
+But that's not really fun. It's prosaic. But it is a necessary part of the game. 
+
+So I start to think about how the game is played. Or how to get myself as a player, completely into the game. So what I'm thinking about is like this: 
+
+>I, as a human, am just sitting in this chair, and I've opened a computer, and opened the terminal application. I ran the code `ruby main.rb` and now something else needs to happen.
+
+How will I **as the creator/designer/builder of this program** bring that human from their position of non-engagement with the program, to complete engagement with the program?
+
+Well, what is the program? 
+
+The program is the Mastermind game. 
+
+And how do I play the game? 
+
+Well, a player choses to either make the code, or break the code. 
+
+### Aha! something to do!
+
+I need to prompt the user right away if they'd like to make the code or break the code. So I need some input from the user. I know how to do that. I use a `gets` method...
+
+..but wait. How do I do this in the context of the `Game` class? 
+
+Well, I need to "do" something....I need to get some input from the user. So then, speaking from the perspective of Object-oriented design, I need to create a "behavior". And I've already seen, numerous times (because I'm doing a lot of reading and note-taking, and i've read a lot of articles and books....right?)...that in OOP...a verb is an action, is a function, is a method...is something I can create. 
+
+So there, I think I just answered my own question. 
+
+I get input from the user, by writing a method in the `Game` class. 
+
+```ruby
+#mastermind_with_rsuazo
+class Game
+
+  def get_input
+  end
+
+end
+
+game_instance = Game.new
+game_instance
+```
+Awesome. Progress. 
+
+so what happens if I run this? Nothing, obviously. 
+
+So then, what? 
