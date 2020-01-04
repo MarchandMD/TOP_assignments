@@ -182,7 +182,7 @@ Why did I do this?
 
 Well, because I was sick of going so slow, and I wanted to make some serious progress. 
 
-Now, when I create an instance of the `Game` class, I now have access to `@colors` which is an `Array`. then I set `@secret_code` by using the `Array` that is stored in the `@colors` instance variable, and calling `@sample` four times `@colors.sample(4)`. 
+Now, when I create an instance of the `Game` class, I now have access to `@colors` which is an `Array`. then I set `@secret_code` by using the `Array` that is stored in the `@colors` instance variable, and calling `#sample` four times `@colors.sample(4)`. 
 
 this requires having a working knowledge of `Array` methods. 
 
@@ -194,6 +194,108 @@ So if I want an object like an `Array` to do something, many times there is alre
 
 That's what "working knowledge" is....
 
+## Now I have a secret code..just like that. Now what? 
 
+Well, I still ahve the `#break_the_code` method...and I can do something else with it....but what? 
 
+Well, why not use it to actually attempt to break the code? 
+
+Get input from the user
+
+I started to write `#break_the_code`
+
+```ruby
+  def break_the_code
+    puts "enter your guess.\n"
+    puts "your options are:\n"
+    puts "(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet"
+    loop do
+      color_choices = gets.chomp.downcase
+      break
+    end
+  end
+```
+
+I also starting writing another method, called `#validate`
+
+```ruby
+def validate(choices, possible_colors)
+    choices.split('')
+  end
+```
+
+because I want to take two arrays (represented here as the parameters) and validate the input.
+
+actually, the `choices` parameter is going to be a string...because that's what `gets.chomp.downcase` will create...
+
+so I had to do:
+
+```ruby
+choices.split('')
+```
+
+and that will turn a string into an array. 
+
+Now what I want to do is compare the `Array` of `choices` to the `Array` of the `@secret_code`...
+
+So who will I do that? 
+
+Well, right now, I just want...what do I want to do? 
+
+I want ot make sure that the choices of the user is a permissible entry. 
+
+So then, the input of the `choices` parameter needs to be better prepped... so when I get the choices from the user, they're already "filtered" if you will, to make sure they're the right length, and if they're permissible letters. 
+
+so like, I wnat to make sure all the elements in choices are letters from colors...
+
+I know that what I want to do is something similar to this: 
+
+I want to make sure a single element is in the `@colors` array. 
+
+Then I want build that idea up to check every element in array. 
+
+So the first hting I'm going to do is make sure I know how to do this for just one element. 
+
+```ruby
+@colors.include?(choices[0])
+#=> true
+```
+
+Ok, cool.
+
+so I do know how to do it for just one element. 
+
+then how do I do this for several elements in an array? 
+
+```ruby
+i = 0
+answers = []
+while i < choices.length
+  answers << colors.include?(choices[i])
+  i += 1
+end
+
+```
+
+Ok, so this is like a neat little for loop. but I could probably do this cleaner. 
+
+ 
+So what am I doing? 
+
+I'm trying to make sure that every letter the user enters is permissible...
+
+so this is what my validate method has become: 
+
+```ruby
+def validate(choices, possible_colors)
+    array_of_letters = choices.split('')
+    i = 0
+    answers = []
+    while i < array_of_letters.length
+      answers << colors.include?(array_of_letters[i])
+      i += 1
+    end
+    puts answers.all?(true) ? "valid input" : "invalid input"
+  end
+```
 

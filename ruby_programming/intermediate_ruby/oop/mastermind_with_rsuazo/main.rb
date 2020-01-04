@@ -25,6 +25,31 @@ class Game
     end
   end
 
+  def break_the_code
+    puts "enter your guess.\n"
+    puts "your options are:\n"
+    puts "(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet"
+    loop do
+      color_choices = gets.chomp.downcase
+      if color_choices.length != 4
+        puts "only select 4"
+      else
+        break
+      end
+    end
+  end
+
+  def validate(choices, possible_colors)
+    array_of_letters = choices.split('')
+    i = 0
+    answers = []
+    while i < array_of_letters.length
+      answers << colors.include?(array_of_letters[i])
+      i += 1
+    end
+    puts answers.all?(true) ? "valid input" : "invalid input"
+  end
+
 end
 
 instance_of_game_class = Game.new
