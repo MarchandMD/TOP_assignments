@@ -10,38 +10,40 @@ class Game
   end
 
   def play
-    prompt_user_to_make_or_break == "b" ? prompt_user_for_guess : "making the code"
-    get_guess
-    validate_guess(user_guess) == true ?  comparing_answer(user_guess, secret_code) : try_again
+    prompt_user_to_make_or_break == "b" ? get_guess : not_yet
   end
 
   def prompt_user_to_make_or_break(input = nil)
     puts "Would you like to (m)ake the code or (b)reak the code?"
     loop do
       input ||= gets.chomp.downcase
-      if input == "m" || input == "b"
+      if input == "m"
+        puts "i haven't done this portion yet"
+        break
+      elsif input == "b"
         break
       else
         puts "invalid entry; only (m) or (b) are valid entries"
+        input = nil
       end
     end
     input
   end
 
-  def prompt_user_for_guess
+  def get_guess(input = nil)
     puts "enter your guess.\n"
     puts "your options are:\n"
     puts "(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet"
-  end
-
-  def get_guess(input = nil, colors_arr)
     loop do
       input ||= gets.chomp.downcase
       if input.split('').length != 4
         puts 'select only 4'
         input = nil
-      elsif input.split('').all? { |x| colors_arr.include?(x) } == false
+      elsif input.split('').all? { |x| colors.include?(x) } == false
         puts "select only valid colors"
+        input = nil
+      elsif input.split('').uniq.length != 4
+        puts "No duplicates; try again"
         input = nil
       else
         break
@@ -64,8 +66,8 @@ class Game
     correct_colors
   end
 
-  def try_again
-    puts "you need to try again"
+  def not_yet
+    puts "haven't done that yet"
   end
 
 end
