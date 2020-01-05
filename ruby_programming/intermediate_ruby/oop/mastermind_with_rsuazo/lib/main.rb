@@ -40,6 +40,9 @@ class Game
       if input.split('').length != 4
         puts 'select only 4'
         input = nil
+      elsif validated(input) == false
+        puts "select only valid colors"
+        input = nil
       else
         break
       end
@@ -47,8 +50,15 @@ class Game
     @user_guess = input
   end
 
-  def validate_guess(string)
-    string
+  def validated(a_str, an_arr)
+    i = 0
+    values = []
+    guess_arr = a_str.split('')
+    while i < guess_arr.length
+      values << an_arr.include?(guess_arr[i])
+      i += 1
+    end
+    values.all?(true) ? true : false
   end
 
   def comparing_answer(the_guess, secret_code_arr)

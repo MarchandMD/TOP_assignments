@@ -30,8 +30,14 @@ RSpec.describe Game do
       game.get_guess('royg')
       expect(game.user_guess).to eq('royg')
     end
+  end
 
-    it ""
-
+  context "#validated" do
+    it "returns false if a non-color is passed" do
+      game = Game.new
+      my_guess = 'royx'
+      colors = %w[r o y g b i v]
+      expect(game.validated(my_guess, colors)).to be_falsey
+    end
   end
 end
