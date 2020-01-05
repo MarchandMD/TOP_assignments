@@ -34,13 +34,13 @@ class Game
     puts "(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet"
   end
 
-  def get_guess(input = nil)
+  def get_guess(input = nil, colors_arr)
     loop do
       input ||= gets.chomp.downcase
       if input.split('').length != 4
         puts 'select only 4'
         input = nil
-      elsif validated(input) == false
+      elsif input.split('').all? { |x| colors_arr.include?(x) } == false
         puts "select only valid colors"
         input = nil
       else
@@ -50,16 +50,6 @@ class Game
     @user_guess = input
   end
 
-  def validated(a_str, an_arr)
-    i = 0
-    values = []
-    guess_arr = a_str.split('')
-    while i < guess_arr.length
-      values << an_arr.include?(guess_arr[i])
-      i += 1
-    end
-    values.all?(true) ? true : false
-  end
 
   def comparing_answer(the_guess, secret_code_arr)
     guess_as_array = the_guess.split('')

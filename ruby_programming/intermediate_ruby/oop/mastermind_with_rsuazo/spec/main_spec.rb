@@ -27,17 +27,10 @@ RSpec.describe Game do
   context "#get_guess" do
     it "sets the @user_guess instance variable to the input string" do
       game = Game.new
-      game.get_guess('royg')
-      expect(game.user_guess).to eq('royg')
+      my_guess = 'royg'
+      the_colors = %w[r o y g b i v]
+      expect(game.get_guess(my_guess, the_colors)).to be_truthy     
     end
   end
 
-  context "#validated" do
-    it "returns false if a non-color is passed" do
-      game = Game.new
-      my_guess = 'royx'
-      colors = %w[r o y g b i v]
-      expect(game.validated(my_guess, colors)).to be_falsey
-    end
-  end
 end
