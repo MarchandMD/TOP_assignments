@@ -27,9 +27,9 @@ RSpec.describe Game do
   context "#get_guess" do
     it "sets the @user_guess instance variable to the input string" do
       game = Game.new
-      my_guess = 'royg'
+      my_guess = 'royx'
       the_colors = %w[r o y g b i v]
-      expect(game.get_guess(my_guess, the_colors)).to be_truthy     
+      expect { game.get_guess(my_guess, the_colors) }.to raise_error(NoMethodError)   
     end
   end
 
