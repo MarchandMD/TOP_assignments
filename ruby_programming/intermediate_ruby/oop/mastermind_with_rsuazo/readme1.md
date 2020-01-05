@@ -1,6 +1,34 @@
 ## Testing the Easy way, with RSpec
 
-I don't really want to do this right now....I want just build. So i'll keep doing that. when I absolutely want to use RSpec, I'll return to it. 
+Ok, so, since I got sick of always running the entire script in the command line, and I got sick of running "IRB" everytime I needed to test something, I want a way to test individual parts of the program, without running the entire program everytime. 
+
+Wait, I don't get that. What do you mean "individual parts of the program"? 
+
+I mean....at this point, my program is becoming a little larger. There's a couple of methods...there's even talk of a method with other methods in it...and I'm having to run the entire program just to test one thing.  
+
+Like, I have to run the entire program and run all the methods, just to test one new method. But I dont want to do that. 
+
+Ummm, so you mean you can test just one method at a time? 
+
+Exactly. 
+
+How does that work?  
+
+Well, let me show you how to setup RSpec with a single command in the command line, and then we'll start testing with RSpec.
+
+### Getting started with RSpec
+1. I'm not sure if this is necessary, but in the main directory, I should create a sub-directory called "lib" (short for library) and I should put my `main.rb` in there. 
+
+2. Next, in the command line I should make sure I'm currently "in" the main directory... I can confirm that I am by typing "ls" in the command line, and I should see "lib/"
+
+3. At this point, the next command will automatically initialize the project with RSpec: 
+
+```
+rspec --init
+```
+
+This will create one directory called 'spec/' and a file called `.rspec`. The `spec/` directory has a `spec_helper.rb` file in it.  
+
 
 ## slow your brain, and return to the `Game` class
 Ok, so now, what do I know? 
@@ -426,3 +454,134 @@ So that seems to set it up pretty well for me
 either it's 4 characters or not...
 
 so do that first...which I htink I already have, in teh `#get_guess` method...
+
+Ok, so now I have a little bit of validation in the `#get_guess` method...but I need to add some more...
+
+Because I'm not able to set the answer to reject non-4 character long answers....
+
+So i'm back to this issue of finding out if all the characters of the input are valid charaters. So they're only valid characters if they are part of the `@colors` array...so 
+
+```ruby
+@colors = %w[r o y g b i v]
+```
+
+So i need a way to find out if every element of the string is in the `@colors` array...
+
+
+So why is this such an issue for me? 
+
+I think it's because I'm looking for a shortcut...and I don't think there is a shortcut.
+
+I mean, I need this to be accurate...but I need to take the long way if I need to take the long way....
+
+so I've been really hung up on it...
+
+And I sort of want to look at my other code....
+
+but if I created a method for this....
+
+Ok, so I didn't actually create the method before...but I did now that there was a way to do it: 
+
+```ruby
+colors = %w[r o y g b i v]
+guess = %w[r o y g]
+
+guess.all? { |x| colors.include?(x) }
+#=> true
+```
+
+So, this is waht I've been attempting to do for like, two days now...so this is what I've been looking for...so now..I need to incoroprate this into my code...
+
+Ok, so the next piece of validation that needs to happen, is an elimination of duplicates. 
+
+so then uniq.values must be 4...
+
+# Now what?
+
+Ok, so now I've implemented a certain amount of the program. Here's what I can do: 
+
+1. ask to 'make or break the code'
+2. make a secret code automatically
+3. get input from the user until the guess the code correctly
+
+NOw what else needs to happen? 
+
+Well, there's still the other side of things: and that's the making of the code. 
+
+But then there's still more to it...like, I don't really like the way the game "looks" or "feels" in the terminal. 
+
+So I start to think about how to change that. 
+
+
+so first thing I do is just run the ruby file, and I am critical...I'm as constructively criticaly of the interface as I can be....and the first thing I notice is...I'd like to add some additional space to the output...
+
+Well, the next thing I think, is to start working on the logic of matching the code exactly. 
+
+Because that's part of the game play: 
+
+It's one thing to know that I have 4 correct colors. 
+
+It's another thing to implement that into the game play. 
+
+So the first thing is to make sure that I have four correct colors. the next thing is to determine if the colors are in the correct position or not. 
+
+so what does that logic look like? Even before trying to code it? 
+
+Well, so there's a secret code, and the secret code is like this: 
+
+```ruby
+royg
+```
+
+And so if i put in a guess like this: 
+
+```ruby
+ribv
+```
+
+Then I have one correct color in the right position. 
+
+Now it could have also been like this: 
+
+```ruby
+#secret code
+royg
+
+#guess
+obiv
+```
+
+now this would have been: right color, wrong position, because orange
+
+So then, i need to work out some system to show when I have: 
+
+1. right color, wrong position
+2. right color, right position
+
+That actually seems really confusing. So I want to think about it a little more. 
+
+I mean, what am I starting with? and what do I want to end up with? 
+
+I'm starting with...something I don't currently have...I mean, I still need to do some sort of evaluation. 
+
+I mean, I need to some how take a look at the `@user_guess` and figure out if each element is: 
+
+1. right color, wrong position, or
+2. right color, right position
+
+since the "right color" is the same for both of these, really, if I know which colors are the right colors, I could just focus on the position....
+
+so now...instead of continuing to focus on the overall entire program...I want to sort of "breakout" this issue regarding the right color/wrong posiiton sort of thing...and just figure out how do to this...with Ruby...and then figure out how to do this in the program....
+
+So...I have two arrays: 
+
+1. the user guess
+2. the secret code
+
+and I need to do two passes: 
+
+1. right color, wrong position? 
+2. right color, right position? 
+
+and put the results of those two passes into one array, and then return that one array. 
+

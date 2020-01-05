@@ -10,17 +10,11 @@ RSpec.describe Game do
     end
   end
 
-  context '#try_again' do
-    it "outputs 'you need to try again' to standard output" do
-      game = Game.new
-      expect { game.try_again }.to output.to_stdout
-    end
-  end
 
   context '#comparing_the_answer' do
     it 'returns an integer' do
       game = Game.new
-      the_guess = 'royg'
+      the_guess = %w[r o y g]
       the_code = %w[g y i v]
       expect(game.comparing_answer(the_guess, the_code)).to be_an(Integer)
     end
@@ -29,9 +23,8 @@ RSpec.describe Game do
   context '#get_guess' do
     it 'sets the @user_guess instance variable to the input string' do
       game = Game.new
-      my_guess = 'royx'
-      the_colors = %w[r o y g b i v]
-      expect { game.get_guess(my_guess, the_colors) }.to raise_error(NoMethodError)
+      my_guess = %w[r o y x]
+      expect { game.get_guess(my_guess) }.to raise_error(NoMethodError)
     end
   end
 end

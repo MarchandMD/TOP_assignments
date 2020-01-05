@@ -13,6 +13,13 @@ class Game
   def play
     prompt_user_to_make_or_break == 'b' ? get_guess : not_yet
     comparing_answer(user_guess, secret_code)
+    while correct_colors != 4
+      puts secret_code
+      get_guess
+      comparing_answer(user_guess, secret_code)
+    end
+    puts "congrats! you got the correct four colors! they are: #{user_guess}"
+    puts right_position(user_guess, secret_code)
   end
 
   def prompt_user_to_make_or_break(input = nil)
@@ -30,7 +37,7 @@ class Game
   end
 
   def get_guess(input = nil)
-    puts "enter your guess.\n"
+    puts "\n\n\nenter your guess.\n"
     puts "your options are:\n"
     puts '(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet'
     loop do
@@ -48,14 +55,28 @@ class Game
         break
       end
     end
-    @user_guess = input
+    @user_guess = input.split('')
   end
 
   def comparing_answer(the_guess, secret_code_arr)
-    guess_as_array = the_guess.split('')
-    correct_colors = 8 - (secret_code_arr + guess_as_array).uniq.length
-    puts "You guessed #{correct_colors} correct colors"
-    correct_colors
+    # guess_as_array = the_guess.split('')
+    good_guesses = 8 - (the_guess + secret_code_arr).uniq.length
+    puts "You guessed #{good_guesses} correct colors"
+    @correct_colors = good_guesses
+  end
+
+  def right_position(arr1, arr2)
+    answers = []
+    i = 0
+    while i < arr1.length
+      if arr1[i] == arr2[i]
+        answers << "+"
+      else
+        answers << "_"
+      end
+      i += 1
+    end
+    answers
   end
 
   def not_yet
