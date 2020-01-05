@@ -34,12 +34,12 @@ class Game
     puts "(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet"
   end
 
-  def get_guess
-    input = gets.chomp.downcase
+  def get_guess(input = nil)
     loop do
+      input ||= gets.chomp.downcase
       if input.split('').length != 4
         puts 'select only 4'
-        input = gets.chomp.downcase
+        input = nil
       else
         break
       end

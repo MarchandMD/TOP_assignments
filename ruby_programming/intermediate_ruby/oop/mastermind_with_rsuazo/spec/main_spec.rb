@@ -24,11 +24,14 @@ RSpec.describe Game do
     end
   end
 
-  context "#validate_guess" do
-    it "validates the guess" do
+  context "#get_guess" do
+    it "sets the @user_guess instance variable to the input string" do
       game = Game.new
-      a_string = "royg"
-      expect(game.validate_guess(a_string)).to eq("yes")
+      game.get_guess('royg')
+      expect(game.user_guess).to eq('royg')
     end
+
+    it ""
+
   end
 end
