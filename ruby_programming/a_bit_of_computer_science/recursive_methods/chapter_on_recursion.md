@@ -44,3 +44,41 @@ And so since my curiosity keeps getting snagged by the phrase 'divide-and-conque
 
 # 1/08
 I want to dig into divide and conquer...I'm just not so sure about where to go with it...because the things I look for a little too esoteric for me...or they don't give me the kind of knowledge I'm looking for. I suppose I could keep digging...but I want to move on with the articles I'm looking at. And maybe continue to look for resources...but that's kind of the idea...TheOdinProject is the resource for good sources....so I'll dig into this Bastard's Book of Ruby...After I explore some other free eBooks
+
+Alright so back to the article: 
+
+## The King and his rocks
+
+So, this is a long convoluted make-believe scenario to describe something. And it boils down to: 
+
+* assume a large sample size that somehow needs comparison of the elements....
+
+I just...I really dislike these convoluted stories...because they stray too far from the essential info....
+
+Assume a method needs to be devised that will identify the heaviest object of many objects of varying weight
+
+The long way to do this would be: 
+
+1. pick up a rock
+2. pick up a second rock
+3. If the second rock is heavier, discard the first rock, or vice versa
+4. pick up another rock
+5. proceed until no more rocks
+
+Ya know, writing it like this...I feel like I just developed a pretty good understanding of recursion. Or at least maybe how to identify recursion. 
+
+And each of these parts is essential to recursion, at least as far as I can tell. 
+
+1. A base case
+2. Other scenarios that drive towards a base case
+
+I mean, I honestly think that's the long and short of it. 
+
+the next section of the article: 
+
+## The Two principles of Recursion: 
+
+I know I skimmed the article lst week, but I'm not sure I completely understand or retained the idea of there being two principles of recursion. Never the less, the article lists them as: 
+
+> an end goal, or base case  
+> A process in which the task at hand 
