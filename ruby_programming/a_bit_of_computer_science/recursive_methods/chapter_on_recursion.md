@@ -81,4 +81,33 @@ the next section of the article:
 I know I skimmed the article lst week, but I'm not sure I completely understand or retained the idea of there being two principles of recursion. Never the less, the article lists them as: 
 
 > an end goal, or base case  
-> A process in which the task at hand 
+> A process in which the task at hand is reduced towards that end goal
+
+And that is actually very similar to the two ideas I had. So read on.. 
+
+The Base Case is like the end goal....but in all this discussion about recursion...very little emphasis or discussion is made on HOW TO IDENTIFY A BASE CASE.... Like, what is meant by a base case, in terms of a recursion problem? And how does a programming "drive towards a base case"? 
+
+I mean, thinking about it now, the "base case" seems to be a situation of a simple math problem that can be extrapolated or articulated by the insertion of variables, and using basic math skills like "n - 1" where n is the current number. 
+
+I mean, this is an echo to what....geometry? No...Algebra. Yes. Essentially. Not so much Calculus..maybe pre-calc...but Algebra definitely. The introduction of variables...
+
+So like the base case would be saying something like: 
+
+*If I'm holding only one rock, then it is the heaviest rock in the pile and claim as much*
+
+And so that'd be the base case. That is, if something like the count of a collection is equal to 1, or less than 2, or less than or equal to 1, then we've achieved the base case. 
+
+And then the next part of the Recursion problem would be the process to reduce towards only having one element in the collection. 
+
+So, as I think about this "King and his Rocks" problem now...if I had all the "rocks" listed in an `Array` as elements by their weight (and resisting the urge to do something like `#max`....
+
+I'd want to have a base case that accurately portrays what the end goal is....
+
+So knowing, or being able to identify an end goal is a component of this process...
+
+So that's a skill to develop. Knowing how to create an end goal or base case...
+
+Hmm...so as I think about this...I want to know more about writing a better base case...and I found this article: 
+
+<https://www.shmoop.com/computer-science/recursion/base-case.html>
+
