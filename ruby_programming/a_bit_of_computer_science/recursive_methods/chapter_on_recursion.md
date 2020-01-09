@@ -153,3 +153,96 @@ def recursive_method(n)
   return n if n == 1
 end
 ```
+
+so now, if I do
+
+```ruby
+recursive_method(1)
+=> 1
+
+recursive_method(2)
+=> nil
+```
+
+so, this really helps me, a lot. I mean, if the method wasn't written to handle the situation, it'll simply return `nil`. Which is different than a `SystemStackError`. 
+
+but to develop my understanding of writing a recursive method, at least for a factorial...I want to continue to develop the original method...
+
+```ruby
+def recursive_method(n)
+  return n     if n == 1
+  return n + 1 if n == 2
+end
+```
+
+So, this'll do something else....obviously
+
+```ruby
+recursive_method(1)
+=> 1
+
+recursive_method(2)
+=> 3
+
+recursive_method(3)
+=> nil
+```
+
+again, I've illustrated what will happen if I provide a parameter that has not been considered in the method body. 
+
+So I feel at this point, instead of continuing to extrapolate so much, I might need to begin using recursion...
+
+...and that means, calling the method, _within itself_. 
+
+But I don't quite see the pattern yet. Just staring at it won't necessarily make it seen. 
+
+Maybe it might help to write slightly different methods....one to contain the base case, and another to handle other situations...
+
+```ruby
+def recursive_method2(n)
+  # but I don't know how to set up this part of it 
+  recursive_method(n)
+end
+```
+
+Alright, so I went back to the video by Joshua Cheek, and the first thing I see is...a difference in my base case...
+
+
+```ruby
+def sum_upto(n)
+  return 1 if n == 1
+end
+```
+
+which is different then my basecase, because I was saying: 
+
+```ruby
+def sum_upto(n)
+  return n if n == 1
+end
+```
+
+So, why is my base case a bad base case, while the previous base case accurate? 
+
+So, the "thing" that is different is very subtle, but very specific...the return value. The return value is hard coded in the base case #1...to be a specific value...where as the return value in the base case #2 (which I wrote) is still dependent on the parameter. 
+
+Now that's not necessarily a bad thing...however, the parameter is going to be changing. Not just in the initial call of the method...but it's going to be changing in the subsequent calls of the method. 
+
+But I don't want to go too far with my rationalization for why I've done something wrong just yet, because these details may change here shortly. I just want to make a note of these things first...
+
+Ok...so doing the next line in the method shows the strength in a recursive method...but immediately using the method's base case...
+
+```ruby
+def sum_upto(n)
+  return 1               if n == 1
+  return sum_upto(1) + 2 if n == 2
+end
+```  
+
+so, right there, I see a couple things: 
+
+1. I see a base case (n == 1)
+2. a call to itself (sum_upto(1)) within the method
+3. the parameter being used to determine a call to the method itself
+
+I'm not sure If I need to point out the last thing. 
