@@ -41,3 +41,6 @@ back to the article....
 I don't really know what is meant by this "divide-and-conquer" idea...and I know it comes from a different article...
 
 And so since my curiosity keeps getting snagged by the phrase 'divide-and-conquer' i'm going to spend some more time with the other article. 
+
+# 1/08
+I want to dig into divide and conquer...I'm just not so sure about where to go with it...because the things I look for a little too esoteric for me...or they don't give me the kind of knowledge I'm looking for. I suppose I could keep digging...but I want to move on with the articles I'm looking at. And maybe continue to look for resources...but that's kind of the idea...TheOdinProject is the resource for good sources....so I'll dig into this Bastard's Book of Ruby...After I explore some other free eBooks
