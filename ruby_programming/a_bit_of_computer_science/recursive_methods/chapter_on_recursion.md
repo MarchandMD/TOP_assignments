@@ -111,3 +111,45 @@ Hmm...so as I think about this...I want to know more about writing a better base
 
 <https://www.shmoop.com/computer-science/recursion/base-case.html>
 
+and it makes the idea of recursion something elegant...something simple. 
+
+And it looks like it's boiling the issue down into a well organized `if/else` statement.
+
+Being on the lookout for "infinite recursion"; It seems like something that sort of reveals itself. 
+
+Maybe I try again...
+
+I think the point is...to make the method something that I can call in itself...
+
+So that implies that the method itself is fairly simply...or simplistic...
+
+So then, how would I write a simple method for the current `arr`? 
+
+yeah...there seems to be...not necessarily a definite method to writing recursive functions, let alone base cases. it almost seems more....creative. Or at least instinctual. Or even artistic. Or inspired. 
+
+Though what i've read makes it seem like it's something that comes with trial and error, and doing it more may make it more second nature. Still, this Schmoop.com article seems insightful. And seems to build on the topic from the TOP article in Bastards book...
+
+So...this is what I like about this Shmoop article....it gives me the opportunity to visualize. So i'm going to do a sidebar in this bastard article for this shmoop article...
+
+
+##Recursion: The Call Stack
+>In recursion, the goal -- the end condition -- is always the **base case**. It's the bottom of the barrel, the _end of the recursive calls_. 
+
+So, this is maybe the image that I'm not drawing for my own mind's eye: recursion is the calling of itself over and over again...until a base case. 
+
+So, while a base case is necessary...so is the calling of the method as well. 
+
+so maybe I need to extrapolate the idea of recursion a little bit. And that's what this article is doing. 
+
+>If a recursive method calls itself, it has to stop when it hits the base case and works it's way back up to the original method. 
+
+Ok...so again, here's something of a visualization: A method, calling itself, and then somehow 'building' something for itself in memory and also giving it an opportunity to do something different than it's past action. 
+
+so something like finding a factorial: 
+
+```ruby
+# summing numbers 1..4
+def recursive_method(n)
+  return n if n == 1
+end
+```
