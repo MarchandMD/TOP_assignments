@@ -236,6 +236,7 @@ Ok...so doing the next line in the method shows the strength in a recursive meth
 def sum_upto(n)
   return 1               if n == 1
   return sum_upto(1) + 2 if n == 2
+  return sum_upto(2) + 3 if n == 3
 end
 ```  
 
@@ -245,4 +246,112 @@ so, right there, I see a couple things:
 2. a call to itself (sum_upto(1)) within the method
 3. the parameter being used to determine a call to the method itself
 
-I'm not sure If I need to point out the last thing. 
+I'm not sure If I need to point out the last thing. But nonethe less, the parameter isn't specifically being used in the body of the recursive method...at least not yet. 
+
+So...what else do I notice here? 
+
+I'm starting to notice that the parameter being passed to the method is increasing incrementally. 
+
+Each case is being written, long hand...
+
+```ruby
+def sum_upto(n)
+  return 1               if n == 1
+  return sum_upto(1) + 2 if n == 2
+  return sum_upto(2) + 3 if n == 3
+  return sum_upto(3) + 4 if n == 4
+end
+```
+
+What else am I noticing? 
+
+The call of 
+
+```ruby
+return sum_upto(3) + 4 if n == 4
+```
+
+is using the call to 
+
+```ruby
+return sum_upto(2) + 3 if n == 3
+```
+
+So...the "case" as determined by the parameter value, is being called to satisfy the "adjacent" case.
+
+So, by going slowly and writing out the entire method "long-hand"...Im' able to see which pattern is being devleoped. 
+
+But I'm not really sure I am able to see that. 
+
+I mean, I look for a pattern. So...the pattern is...
+
+1. `return`
+2. `sum_upto(something)`
+3. `+ original parameter`
+
+then, to extrapolate this method...
+
+```ruby
+def sum_upto(n)
+  return 1               if n == 1
+  return sum_upto(1) + 2 if n == 2
+  return sum_upto(2) + 3 if n == 3
+  return sum_upto(3) + 4 if n == 4
+end
+```
+
+I begin to back-fill with the variable...
+
+```ruby
+def sum_upto(n)
+  return 1                   if n == 1
+  return sum_upto(n - 1) + n if n == 2
+  return sum_upto(2) + 3     if n == 3
+  return sum_upto(3) + 4     if n == 4
+end
+```
+
+and so now, i'm using a more general parameter to write the recursive step...
+
+```ruby
+def sum_upto(n)
+  return 1                       if n == 1
+  return sum_upto(n - 1) + n     if n == 2
+  return sum_upto(n - 1) + n     if n == 3
+  return sum_upto(3) + 4         if n == 4
+end
+```
+
+And again...there is a duplication
+
+```ruby
+def sum_upto(n)
+  return 1                       if n == 1
+  return sum_upto(n - 1) + n     if n == 2
+  return sum_upto(n - 1) + n     if n == 3
+  return sum_upto(n - 1) + n     if n == 4
+end
+```
+
+and so it actually feels like the additional lines are redundant at this point...
+
+```ruby
+def sum_upto(n)
+  return 1                       if n == 1
+  return sum_upto(n - 1) + n     if n == 2
+								 if n == 3
+					        	 if n == 4
+end
+```
+
+
+NOw, this is well and good...but what if `n == 5`? or something else? 
+
+Well, I'd need to remove the non-essential conditional statements....
+
+```ruby
+def sum_upto(n)
+  return 1                       if n == 1
+  return sum_upto(n - 1) + n
+end
+```
