@@ -359,3 +359,11 @@ end
 And this works. 
 
 so this is the method for Factorials. This is how I would build a factorial method. So I feel like adding this to a separate file, since I know I'll be needing to do this for a test down stream. 
+
+Ok, so, I peeked at the next question of the future test I'm suppposed to be "passing"...and I see the "99 bottles of beer" problem. which I felt was a pretty easy one to be done, from way back when I was doing the "Learn to Program" book by Chris Pine. But I've started to build this method...just like I built the factorial method above...or learned to build the one above...and there's something taht I 'm curious about...
+
+Is it ok to use an `if/elsif/else` statement recursively? I mean, I sort of am...but the way they're teaching me, makes me want to re-visit some of the nuance of the language...like, how I can set up the if-elses....
+
+ok, so I just took a side journey into `if-else expressions` and i'm glad I did...but I'm not sure I'm getting what I need. But seeing this information again...makes more sense now. And it's things that are sort of being solidified in my own brain. 
+
+so...ok...um, yeah. I think I'm going to make a new file, since this on is +2500 words....
