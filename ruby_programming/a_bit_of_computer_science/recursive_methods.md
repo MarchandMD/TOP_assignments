@@ -24,6 +24,13 @@ So, I'm going to want to add to the "Learning Outcomes" above.
 #### Questions from the Test: 
 
 1. Define a recursive function that finds the factorial of a number
+
+```ruby
+def sum_upto(n)
+  return 1 if n == 1
+  return sum_upto(n - 1) + n 
+end
+```
    
 2. Define a recursive function that returns true if a string is a palindrome and false otherwise
    

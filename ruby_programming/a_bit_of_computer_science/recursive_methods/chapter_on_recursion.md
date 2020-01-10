@@ -355,3 +355,7 @@ def sum_upto(n)
   return sum_upto(n - 1) + n
 end
 ```
+
+And this works. 
+
+so this is the method for Factorials. This is how I would build a factorial method. So I feel like adding this to a separate file, since I know I'll be needing to do this for a test down stream. 
