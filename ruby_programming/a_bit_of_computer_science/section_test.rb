@@ -6,7 +6,7 @@ end
 
 ## 2. 99 bottles
 def bottles(n)
-  return "no bottles of beer on the wall" if n < 1
-  return "#{n} bottle of beer on the wall, #{n} bottle of beer.." if n == 1
-  return "#{n} bottles of beer on the wall, #{n} bottles of beer.." if n >= 2
+  puts "#{n} bottles of beer on the wall..."
+  return n < 1 ? "No more bottles of beer on the wall" if n < 1
+  return bottles(n - 1)
 end
