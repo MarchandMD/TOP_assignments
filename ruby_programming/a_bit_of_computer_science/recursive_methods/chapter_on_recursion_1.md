@@ -283,6 +283,69 @@ a = rock_judger(rocks_arr.slice!(0, rocks_arr.length/2))
 b = rock_judger(rocks_arr)
 ```
 
+So as I can see...this NON BASE CASE branch of this `if/else` expression calls the method with a different type of arr in the parameter....so what's happening is: 
 
+1. the `rocks_arr` (the original parameter) is being destructively sliced with two parameters: 0 (or the beginning of the array), and half the length of the original array.
+2. then the second variable "b" is being assigned the remainder of the elements with a simple call to `rocks_arr`
 
-  
+The reason #1 works is because calling `#slice!` results in the values being sliced being returned...where as the original array is reduced to the remainder of what's left after calling slice.
+
+So just to be sure, i'm going to hop over to PRY to verify this.
+
+Yep, that's exactly what happens. Ok. so moving on...
+
+the nextd step in the article is to reduce the method down...or re-factor: 
+
+```ruby
+def rock_judger(r_arr)
+  count = r_arr.length
+  a, b = count <= 2 ? [r_arr[0], r_arr[-1]] : [rock_judger(r_arr.slice!(0, r_arr.length/2)), rock_judger(r_arr)]
+  return a > b ? a : b
+end
+```
+
+so now, I need to make shure this works, since I made some changes to it..
+
+and it does. I should tkae a closer look at this method.
+
+Because there are things to learn from this method. 
+
+The first of which is...the second line of the method...
+
+```ruby
+a, b = count <= 2 ? [r_arr[0], r_arr[-1]] : [rock_judger(r_arr.slice!(0, r_arr.length/2)), rock_judger(rock_arr)]
+```
+
+so, what is happening here? 
+
+Well, first...
+
+```ruby
+a, b = 
+```
+
+so this is parallel assignment, yeah? 
+
+Yes. it is. So the rest of this statement is going to be assigning valuels to these two variables. But how? 
+
+How is `a` and `b` recieve values from this assignment?
+
+Ok, so I'm learning about parallel assignment. 
+
+Ok, so this recursion section is more than just abou trecursion. 
+
+to become more capable in the language, it takes a better understanding of the nuance of the language. And that's kind of what Im getting from this section. It's more about the additional things that go into the writing of well designed recursive methods. 
+
+So with that said, i'll keep parsing this line of code from this example. 
+
+well, now that I'm comfortable with the idea of parallel assignment the line of code akes complete sense to me. 
+
+So I'll mvoe on. 
+
+>So what was the point of recursion?
+>
+>That's a good question to ask, even if you're an expert programmer. Recursion has performance and design tradeoffs, and some of this is dependent on the nature of the language and compiler. In this case, iterating with each loop is significantly faster than any of the recursive methods.
+
+The article ends with the idea of a call stack. Saying that there may be limitations on the size of a call stack. Which is kind of the idea overall. There is a stack, and tha tcall stack has a limitation, and if I write the recursive strategy incorrectly, then there will be a stack overflow which is a real thing and more than just a website. 
+
+So then, where to go from here? I've already watched the video; like 1.5 tims at this point. I would like to read this shmoop article. 
