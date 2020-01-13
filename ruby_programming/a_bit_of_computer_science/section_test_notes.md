@@ -412,4 +412,22 @@ def how_many_times(n)
 end
 ```
 
-Ok...so as I was doing this...began to think about the base case. Like, instead of doing the 
+Ok...so as I was doing this...began to think about the base case. Like, instead of doing the iteration...I'd like to create some sort of base case. Or at least attempt to. 
+
+But i'm not sure I understand the base case well enough. So maybe that's where some of my confusion or mis-understanding is coming from. 
+
+```ruby
+def how_many_times n 
+  str = 'Edbit'
+  str = str.split('')
+  return str.join('') if str.count('a') == 0
+end
+```
+
+Now...why isn't this a good base case? 
+
+What makes a good base case? 
+
+I think i'm going to take a look at the wikipedia page now...
+
+>...the small sub-problem that is solved 
