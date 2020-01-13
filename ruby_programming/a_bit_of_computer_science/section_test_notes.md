@@ -176,3 +176,121 @@ and I'm comparing each of these to:
 
 ```ruby
 str[-1] && str[-2] && str[-3] && ..str[-(str.length)]
+```
+
+So...I cheated. And looked at the solution from the website. 
+
+But I'm not sure I really understand the solution right now. but I do feel like I was going along the right path. But I feel like I still need to spend some more time with some other examples. 
+
+So before parse this solution...I'll take a look for more recursion examples....
+
+Recursion is such a strange thing....
+
+So..here's the method I'm working on....
+
+>Write a function that takes an integer and returns a string with the given number of "a"s in Edabit.
+
+And I want to do this recursively. 
+
+Now, I feel like there's a starting point i need to be at. 
+
+And in the method, since I'm only calling the method, and passing in an integer, an integer is the only thing I have to work with. So there needs to be a `String` in the method already..for me to work on...
+
+```ruby
+def how_many_times(n)
+  str = "Edabit"
+```
+
+Ok, so now that I have the necessary data in the method...I need to start doing things to it. 
+
+I'll try to write this out the long way, and cover from the base case out...
+
+So, the base case...
+Um..well, this is strange. I need to re-think how I approach the data I have to work with. Because what do i ahve to work with? 
+
+1. a `String` object stored in a variable
+2. an `Integer` object
+
+And how do I want these two things to interact? 
+
+Well, I want the `String` object to reflect the same number of "a"s as denoted by the `Integer`. 
+
+So what if the parameter is 0? 
+
+Well, if the parameter is 0, then I want the method to return "Edbit"...which does what I want it to do. So that means it removes the letter "a"...when the parameter is 0. However, this doesn't seem to be a good base case. And why not? 
+
+Because right now I don't have a base case written....so let me simply write the method to perform the task necesasry with the parameter I'm considering...
+
+```ruby
+def how_many_times(n)
+  str = "Edabit"
+  
+  if n == 0
+    str.slice!(2)
+  end
+  
+  if n == 1
+    str
+  end
+  
+  if n == 2
+    str.insert(2, 'a')
+  end
+  
+  if n == 3
+    str.insert(3, 'a')
+  end
+  
+  if n == 4
+    str.insert(4, 'a')
+  end
+  
+  str
+end
+```
+
+
+But this wouldn't explicitly work...
+
+For example, in the scenario when `n == 4`...the result would be:
+
+```ruby
+"Edabait"
+```
+
+...so this would only work if...an "a" had been inserted at 2 and 3.
+
+Now...if the `#count` of "a"s in `str` is equal to the parameter...return the string...otherwise....call the method...
+
+So maybe something like: 
+
+```ruby
+def how_many_times(n)
+  return 'Edbit' if n == 0
+  return 'Edbit'.insert(2, 'a' * 1) if n == 1
+  return how_many_times(1) if n == 2
+  return 'Edbit'.insert(2, 'a' * 3) if n == 3
+end
+```
+
+I need to writ eit out long form more...
+
+I have neither a base case, nor do I have a recursive case here...because I don't know how to incrementally return more and more...up to a base case....
+
+So i'm going to write it out long hand again: 
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+  return str if str.count(a) == n
+  return str.insert(2, 'a' * 1) if n == 1 # how_many_times(1)
+  return str.insert(2, 'a' * 2) if n == 2 # how_many_times(2)
+  return str.insert(2, 'a' * 3) if n == 3 # how_many_times(3)
+  return str.insert(2, 'a' * 4) if n == 4 # how_many_times(4)
+  return str.insert(2, 'a' * 5) if n == 5 # how_many_times(5)
+end
+```
+
+So I have this...but there is no recursive call. 
+
+But I do have some integers in here...so I feel like, 
