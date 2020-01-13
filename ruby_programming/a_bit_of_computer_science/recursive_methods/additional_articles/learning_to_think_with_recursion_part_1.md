@@ -41,3 +41,7 @@ but at this point, I don't feel like I'm capable of doing either things. I feel 
 But perhaps this is what the author is talking about....he's talking about the need to focus on, equally, or maybe more...the other part of the method...the recursive case. 
 
 But I sitll want to focus on the base case for my discussion...because I've had a new thought about it in relation to the call stack.
+
+#### The base case should be thought about in terms of initiating a cascade of successful method calls, that leads to the output of the base of the recursive case call stack. 
+
+Now, putting it like this...I think entirely differently about the base case..and what it's intended to do. 
