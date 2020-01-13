@@ -293,4 +293,123 @@ end
 
 So I have this...but there is no recursive call. 
 
-But I do have some integers in here...so I feel like, 
+But I do have some integers in here...so I feel like, eventually I'll want to start replacing the integers with `n`...but not yet. 
+
+First thing I want to do is sort of figure out the strength of my base case. And then I also want to think about finding a way to add a recursive case. 
+
+I'm getting stumped because I'm thinking about the parameter now.
+
+If the parameter is 2...how can I make a call to `#how_many_times(1)`...and then amend something to it? 
+
+What would `#how_many_times(1)` return? Just..as a method itself? it would return `"Edabit"`...
+
+So then, couldn't I: 
+
+```ruby
+str = how_many_times(n - 1) if n == 2
+```
+
+now..everytime `#how_many_times` is called...`str` is re-defined...
+
+so I may want to re-arrange things...
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+  str = str.insert(2, 'a' * 0) if n == 0
+  return str if str.count('a') == n
+  str = str.insert(2, 'a' * 1) if n == 1
+  str = how_many_times(n - 1) if n == 2
+  str = how_many_times(n - 1) if n == 3
+end
+```
+
+I don't know. 
+
+So, here's what I need to do. 
+
+Since I'm staring at this, and I want to do this...I need to start trying things, and holding things constant, and tweaking just one small thing at a time...instead of trying to think through the entire thing in one fell swoop....
+
+So what I'm going to do is go ahead, and start over. And I'm going to begin to write things out long hand...and then I'm going to make as few chances as possible. But my mind does keep trying different things, and I don't want my mind to exhaust itself trying to get one thing right.
+
+What I do want to do though...is experiment in a methodical way. Because I am doing something now. But I'm doing neither a base case nor am I doing a recursive case. 
+
+So, I want to try somethings...because right now...all I'm doing...is trying to write the perfect method....as opposed to attempting things. 
+
+And do I want to try to use RSpec to help? 
+
+I mean, how do I start this? 
+
+Take it one step at a time: 
+
+```ruby
+def how_many_times(n)
+  puts "hello"
+end
+```
+
+Ok, now I want to change it slightly. 
+
+The method is supposed to, recursively, inject the letter 'a' into the word "Edabit"..so if the parameter is 0, return 'edbit' if it's 1, return 'Edabit'...and so on....
+
+so, next thing I want to do is...make it say `Edbit'
+
+```ruby
+def how_many_times(n)
+  return 'Edbit'
+end
+```
+
+Ok, so now...I want to bring the parameter into the method...
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+  str.insert(2, 'a' * n)
+end
+```
+
+Ok...so now..this method does what I'm asking it to do...like, flawlessly...
+
+...so now...I want to figure out how to make it do the same thing...but recursively...
+
+So, mayby this is the part where I need to create a sub-problem? 
+
+Or...I need to take a step back....because the method works flawlessly now...and what I need to do is find a way to make it work less flawlessly.
+
+So...is there I way that I can make it return the correct output..by using an iteration loop? 
+
+I think that, perhaps the `#insert` is maybe making this too easy...so I'm going to remove that method, and it's parameters...
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+end
+```
+
+and now, I want to think about how to do iteration. 
+
+I mean, I can use `#each`...but that's an Array method. And I currently don't have an Array. 
+
+But since I've started in this direction...let's keep going. 
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+  str =  str.split('')
+end
+```
+
+Now..I have an array. And I can use `#each`...
+
+```ruby
+def how_many_times(n)
+  str = 'Edbit'
+  str = str.split('')
+  str.each do |x|
+    x
+  end
+end
+```
+
+Ok...so as I was doing this...began to think about the base case. Like, instead of doing the 
