@@ -145,3 +145,44 @@ The author says:
 
 >I did not think about how I could break the problem down all the way to the base case. That is the function’s job, not yours. Instead, I only thought about the problem that is one step simpler than the problem I am really trying to solve, and then I wrote my recursive algorithm to build up from there to solve the real problem.
 
+this is such a strange concept. 
+
+And I don't really feel like I"m making progress after this article...sO i'm going to move to a different resource...
+
+see..so, this is where I was going...I've been doing a lot of thinking about this...and I've probably already thought some things that make sense to me...like..thinking about what the method returns...because what Ruby ends up doing is...placing the previous method call on "hold" until the next method call returns a value...and then Ruby will do something with that returned value.
+
+
+```ruby
+def reverse(str)
+  return str if str.length < 2
+  reverse(str.slice(1, str.length)) + str[0]
+end
+```
+
+the recursive case...look at the recursive case....
+
+it's a call to the method itself.....
+
+So...when will the method be called? 
+
+Inside the call to `#reverse` when the `str >= 2`. 
+
+And so then...what will the embedded `#reverse` method do? 
+
+It'l take the original `str` parameter...then it will `#slice` a portion of it off...from `1, str.length`....so what is that? 
+
+So, what's inherit to know is how the `#slice` method is working....which I don't actually know. 
+
+So that's the really eye opening thing. I mean, I really have no idea how this method works...but I just read it, so now I do...
+
+`#slice` works like this: 
+
+it can accept a couple of different combinations of arguments. 
+
+the way I'm using it ehre is: 
+
+```ruby
+str.slice(start, length)
+```
+
+So this means that the first argument will be the starting location, and the second argument will be the length. 
