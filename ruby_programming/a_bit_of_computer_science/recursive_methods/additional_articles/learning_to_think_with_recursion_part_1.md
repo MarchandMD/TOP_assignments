@@ -45,3 +45,11 @@ But I sitll want to focus on the base case for my discussion...because I've had 
 #### The base case should be thought about in terms of initiating a cascade of successful method calls, that leads to the output of the base of the recursive case call stack. 
 
 Now, putting it like this...I think entirely differently about the base case..and what it's intended to do. 
+
+Because...can I put a recursive call stack into a visual repressentation? I mean, i think that might be helpful to me. 
+
+Because...
+
+The base case is going to return a definitive value. 
+
+Make the method do what I want...but then call the method before exiting...with the different parameter
