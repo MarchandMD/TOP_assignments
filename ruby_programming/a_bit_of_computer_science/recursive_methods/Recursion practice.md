@@ -48,5 +48,7 @@ So, there's a couple of things happening here:
 * the `#rec_arr` is being called
 * the `#rec_arr` is receiving something different than the original `#rec_arr` parameter
 * the recursive `#rec_arr` call is returning the `arr`, because that is the only non-recursive function of the method. 
-* That returned `arr`...
+* That returned `arr` is also then accepting, or receiving, or having shoveled onto the end of the returned single element `arr`...the `arr[arr.length - 1]`...so what is this? 
 
+## `arr[arr.length - 1]`
+So, at the time the recursive `#rec_arr` method is called, there is a parameter that has been passed into the original `#rec_arr` method...and that parameter has the value of `arr`. So Ruby is placing the performance or completion or execution of the original `#rec_arr` method (which includes the recursive `#rec_arr` call) to complete the recursive `#rec_arr` call
