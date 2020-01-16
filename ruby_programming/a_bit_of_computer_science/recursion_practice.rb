@@ -11,6 +11,12 @@ end
 
 # Write a recursive function that prints every element from an Array
 def rec_arr(arr)
-  return arr          if arr.length == 1
-  return rec_arr(arr.slice!(0, arr.length - 1)) << arr[arr.length - 1]
+  return arr if arr.length == 1
+  rec_arr(arr.slice!(0, arr.length - 1)) << arr[arr.length - 1]
 end
+
+def rec_pal(str)
+  forwards = str
+  backwards = str.reverse
+end
+
