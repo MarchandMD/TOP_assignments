@@ -51,4 +51,40 @@ So, there's a couple of things happening here:
 * That returned `arr` is also then accepting, or receiving, or having shoveled onto the end of the returned single element `arr`...the `arr[arr.length - 1]`...so what is this? 
 
 ## `arr[arr.length - 1]`
-So, at the time the recursive `#rec_arr` method is called, there is a parameter that has been passed into the original `#rec_arr` method...and that parameter has the value of `arr`. So Ruby is placing the performance or completion or execution of the original `#rec_arr` method (which includes the recursive `#rec_arr` call) to complete the recursive `#rec_arr` call
+So, at the time the recursive `#rec_arr` method is called, there is a parameter that has been passed into the original `#rec_arr` method...and that parameter has the value of `arr`. So Ruby is placing the performance or completion or execution of the original `#rec_arr` method (which includes the recursive `#rec_arr` call) to complete the recursive `#rec_arr` call. 
+
+Assuming the recursive `#rec_arr` call returns the base case...Ruby will then return the base case....but she doesn't stop there. 
+
+She returns the base case...but that return is the return of the "RECURSIVE CALLED `#REC_ARR` method....and that is "returned" more or less "INSIDE" the original `#rec_arr` method call. Well, Ruby isn't don't doing what I've instructed her to do.  
+
+She will then shovel on `arr[arr.length - 1]`. Which is the parameter from the original `#rec_arr` call. In the event that it's a two element array...the shoveled element will be `arr.length - 1`....
+
+...and if an `arr` is two elements long, then it's length is 2. So then doing `arr.length - 1` will be the second element...or the lats element.
+
+Another thing I could do is `arr[-1]`. Which I think would have the same effect. 
+
+But that's what will be shoveled on. What is being passed to the recursive call for `#rec_arr`? 
+
+And that's going to be
+
+```ruby
+arr.slice!(0, arr.length - 1)
+```
+
+So what is this pulling from the original `arr` parameter? 
+
+Well, it's `#slicing` destructively the parameter, because if I'm asking Ruby to open up a new method..I also want to give her some new information to take with her.  
+
+So...maybe thinking about the method, and what I want it to do..and what I want to pass to it..and what's the new information I want to pass to it.
+
+I mean, it's almost like the method and the parameter "decay" to a certain point...then something else happens when the decay has reached it's end. 
+
+## back to the palindrome method
+
+So then, what is obviously being passed to the method? 
+
+1. A string
+
+That's unequivocably true. 
+
+So then, how do I want to alter the string ever so slightly to continue making calls? 
