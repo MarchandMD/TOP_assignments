@@ -88,3 +88,26 @@ So then, what is obviously being passed to the method?
 That's unequivocably true. 
 
 So then, how do I want to alter the string ever so slightly to continue making calls? 
+
+Well...what am I comparing in that string? 
+
+I have to compare the first letter of the string with the last letter of the string. 
+
+Then I need to remove the first and the last letter. 
+
+Then I need to remove the first and the last letter....
+
+And so..if the word is an even number of characters...4, or 6....If I take of the first and last letter of a word, I'll be left with a 2 character word. then I'll compare those..then I'll take those away. And then, if the string is 0 or ' '...so I'll need to know how Ruby does that. Like, i'll need to look at a two character string, and then watch waht the return is when I remove the first and last letter from a string, and see what the return is. 
+
+But then, what will I want to do at that point? I mean...that's really projecting myself very far into the future. 
+
+So the first thing I need to do is really figure out what happens to a string that removes two letters, the first and the last, at each iteration...I want to know what is left of the string after everything has been removed. Is it an empty string with a space? Or is it no space? 
+
+So what I'll want to do is something like: 
+
+```ruby
+str = "word"
+#=> "word"
+```
+
+Then, how do I remove a letter from the first and last position at the same time? 
