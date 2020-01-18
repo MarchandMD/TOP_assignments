@@ -186,3 +186,4 @@ str.slice(start, length)
 ```
 
 So this means that the first argument will be the starting location, and the second argument will be the length. 
+
