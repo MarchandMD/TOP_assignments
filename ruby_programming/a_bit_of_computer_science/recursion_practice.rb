@@ -2,8 +2,8 @@
 def how_many_times(n)
   # base_case
   # Think about the call stack while building this base case and recursive case
-  str = 'Edbit'
-  str = str.insert(2, 'a' * n)
+  str = "Edbit"
+  str = str.insert(2, "a" * n)
   return str if n == 0
   #recursion_case
   how_many_times(n - 1)
@@ -21,7 +21,17 @@ def rec_pal(str)
 end
 
 def reduction(str)
-  last = str.slice(-1)
-  first = str.slice(0)
+  last = str.slice!(-1)
+  first = str.slice!(0)
   last == first ? true : false
+end
+
+def palindrome_check(str)
+  return false if str[0] != str[-1]
+  return false if str.length == 0 && str[0] != str[-1]
+  return true if str.length == 1 && str[0] == str[-1]
+  return true if str.length == 2 && str[0] == str[-1]
+  str.slice!(0)
+  str.slice!(-1)
+  reduction(str)
 end

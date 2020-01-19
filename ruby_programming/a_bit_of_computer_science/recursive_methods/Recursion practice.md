@@ -111,3 +111,93 @@ str = "word"
 ```
 
 Then, how do I remove a letter from the first and last position at the same time? 
+
+I made my own method, but I'm sure there's another way to do this...Or, I feel there may be another way to do this...
+
+So then...where did i leave off with this recursion practice? 
+
+I'm not working on any particular Odin Project assignment...though I am working on additional homeworkf for recursion practice. 
+
+so the first thing I wanted to do was simply to go the long way to determining if a word is a palindrome...and then see if I could work my way into recursion. 
+
+Now, I seem to recall that I originally was using `#slice!` in this method. but for some reason I removed it...
+
+Now...what I've done...is fundamentally changed the parameter...so I wouldn't need to do anything different now...would I? 
+
+So, I'm just staring at the code, instead of attempting to try new or different things. 
+
+So i'm going to pick apart the last known working method...before I attempted to just force recursion...
+
+```ruby
+def reduction(str)
+  last = str.slice!(-1)
+  first = str.slice!(0)
+  last == first ? true : false
+end
+```
+
+1. a string is being passed in
+2. I'm destructively slicing the last letter off it and assigning it to the last variable. 
+3. I'm destructively slicing the first letter off it, and assigning it to the first variable.
+4. I'm comparing the two variables..returning true if they're the same...and false if they are not the same.
+
+And now that I htink about it...when the destructive method is being used, it makes it impossible to compare if the remaining letter is the same...because it is possible for str[0] and str[-1] to be the same thing....
+
+So then, how would I step down like that? 
+
+```ruby
+def reduction(str)
+  str[0] == str[-1] ? true : false
+  str.slice!(0)
+  str.slice!(-1)
+  reduction(str)
+end
+```
+
+Ok, so why do I think this will work?...and why do I think it won't work?
+
+Why it will work? 
+
+1. Because the base case provides a situation when the first and the last letter are the same...and it's not comparing them destructively. And it'll compare the input's first character to the input's last character..if they're the same, it'll return true, if they're different it'll return false. 
+
+Now, the reason this won't work is because the base case is too weak. 
+
+There needs to be additional conditioning...
+
+I can't simply return true if the first and last letters are the same..can I? 
+
+No. That isn't a strong base case. 
+
+the point needs to be related to the string length...
+
+I feel like there's something about this being related to string length...
+
+because if I make it about the string length...then I can think of it being the simplest case. 
+
+So what would I need to compare? 
+
+If the parameter were an empty string..what would be the return? 
+
+well, that'd be nil...so the length would be "0"...
+
+So if the length is "0" return "false"
+
+...and I already know that I can have multplie return statementns in amethod...
+
+```ruby
+def reduction(str)
+	return false if str[0] != str[-1]
+	return false if str.length == 0 && str[0] != str[-1]
+	return true if str.length == 1 && str[0] == str[-1]
+	return true if str.length == 2 && str[0] == str[-1]
+	str.slice!(0)
+	str.slice!(-1)
+	reduction(str)
+end
+```
+
+there. I got it. 
+
+It's not pretty. But it serve's it's purpose. 
+
+And I could always attempt to re-factor.
