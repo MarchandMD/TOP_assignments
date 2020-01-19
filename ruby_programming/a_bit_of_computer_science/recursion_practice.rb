@@ -20,3 +20,8 @@ def rec_pal(str)
   backwards = str.reverse
 end
 
+def reduction(str)
+  last = str.slice(-1)
+  first = str.slice(0)
+  last == first ? true : false
+end
