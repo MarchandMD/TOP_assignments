@@ -201,3 +201,19 @@ there. I got it.
 It's not pretty. But it serve's it's purpose. 
 
 And I could always attempt to re-factor.
+
+Well, now that it's working....how else Might I make this work? 
+
+No...I can go look at the solution from the website....
+
+And that's how I write a method recursively to test for a palindrome.
+
+And now I've begun considering submitting this to codereview.stackexchange
+
+I've got a working recursive method...though I'm skeptical about it's "style"....or maybe I'm concerned about it's "smell" so to speak; I'm completely self-taught and the idea of a "code-smell" is somewhat foreign to me and I'm not sure if I'm using the term in the right context here. 
+
+My desire for code review is to open myself and this method I wrote to critique. 
+
+My concern is that the method is verbose, and I've been lazy in the writing of it. 
+
+

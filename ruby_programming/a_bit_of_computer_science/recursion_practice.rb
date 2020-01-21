@@ -27,11 +27,12 @@ def reduction(str)
 end
 
 def palindrome_check(str)
-  return false if str[0] != str[-1]
-  return false if str.length == 0 && str[0] != str[-1]
-  return true if str.length == 1 && str[0] == str[-1]
-  return true if str.length == 2 && str[0] == str[-1]
+  return false if str[0] != str[-1] || str.length == 0 && str[0] != str[-1]
+  return true if str.length <= 2 && str[0] == str[-1]
   str.slice!(0)
   str.slice!(-1)
-  reduction(str)
+  palindrome_check(str)
 end
+
+# return false if str.length == 0 && str[0] != str[-1]
+# return true if str.length == 1 && str[0] == str[-1]
