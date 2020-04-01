@@ -81,6 +81,10 @@ class Game
   end
 
   # 18. Here it is. So, what the hell is it doing? Man, I feel like I should have to work this hard to understand what the method is doing. Then again, I am returning to the code after being awway from it for a while. But that's alright...I can still be constructively critical of the code. So, slow down a litlte bit, and understand the method, so I can understand why the script is breaking when the user takes a certain action. 
+
+  # 19. Ok, so I've had to do a lot of actual looking to decipher what is happening. And this is sort of hwat happens when reviewing code....the writing and slowing down naturally gives way to the brains ability to comprehend, which is much faster. However, the brains ability to translate or communicate that UNDERSTANDING to the OVERSTANDING is limited by my brains 'toolbox' or my brains knowledge base. That might be the id, ego and superego....where the Id is the understanding, the superego is the overstanding, and the ego is the ability to make the two cooperate. But this is taking me away from tghe coding...
+
+  #20. So, what have I been looking at? Well, since the #comparing_answer method accepts two parameters and they are required, I was wondering where the two parameters are being defined; looking at the two parameters, they are named: 1. the_guess and 2. secret_code_arr;Now this is fairly obvious what the parameters are going to contain, at least generally. the parameters are going to be a guess and the secret code in the form of an array. So then the assumption is that the secret_code_arr is already set as part of the instantiation of a Game object instance. This is basic understanding of OOP and programming. 
   def comparing_answer(the_guess, secret_code_arr)
     # guess_as_array = the_guess.split('')
     good_guesses = 8 - (the_guess + secret_code_arr).uniq.length
