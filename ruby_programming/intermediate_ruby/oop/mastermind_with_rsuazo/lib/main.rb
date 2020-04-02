@@ -22,17 +22,25 @@ class Game
     # 11. alright, so i have this simple ternary statement checking if the #make_or_break method returns a 'b' or not; The next thing I'm looking at is the methods here for the true/false responses to the simple logic of the ternary statement; and I see that we've created a method for when the user wants to break the code, but we haven't created a method for the situation when the user wants to #make_the_code; all I have is a method called #not_yet (since renamed to make_the_code); So, since I'm attempting to walk into Ruby again, I think I'm ready to take a look at the #not_yet (since renamed to make_the_code) method, and attempt to begin writing code there....so here we go...
 
     # 16. So, I htink the issue obviously will be within this #play method...because there are some definitive commands that are being called sequentially, and non-conditionally. So, with that information in mind, the obvious thing to do is to look at the next line of the #play method, to see what the program/Ruby is attempting to do....
-    make_or_break == 'b' ? get_guess : make_the_code
+    make_or_break == 'b' ? break_the_code : make_the_code
   
-    # 17. So the next thing the overall program (and more specifically #play method) is attempting to do, is run the #comparing_answer method...so I now have to re-acquiant myself with the #comparing_answer method. 
-    comparing_answer(user_guess, secret_code)
-    while correct_colors != 4
-      puts secret_code
-      get_guess
-      comparing_answer(user_guess, secret_code)
-    end
-    puts "congrats! you got the correct four colors! they are: #{user_guess}"
-    puts right_position(user_guess, secret_code)
+    # 17. So the next thing the overall program (and more specifically #play method) is attempting to do, is run the #comparing_answer method...so I now have to re-acquiant myself with the #comparing_answer method.
+    
+    # 21. Ok, so i'm really starting to "see" this @play method for what it is...and it's a little sloppy. Or it's a lot sloppy. So I'm going to think about the game play a little bit. Like, what's the natural flow that I think should be happening? First: determine if the user wants to make or break the code. I've got that. If the user wants to break the code, then there should be a method called @break_the_code...and that method should, IMHO, contain everything regarding the breaking of the code. Other methods can be in that one, but the @play method should be as simple as possible. If I try to keep eerything simple as possible by writing "ghost" methods, then I am simultaneously building the existing method, and creating more work for down stream. Which is ideal, because then i always ahve something to do. And can scheduel things...sort of. If I was the scheudling type. Which I'm not. 
+
+    # 22. So I want to start moving things around. I'm going to look at getting rid of the @get_guess method...or maybe just renaming it...and then building up the @make_the_code method. So here goes. next comment
+
+    # 23. So, I just changed @get_guess to @break_the_code...and something strange appeared....in the @play method, I already have a call to @break_the_code at the appropriate time...but then, I also have a while loop that will call the @break_the_code method. so I think I want to look at this while loop...and see if I can simply this @play method. because it doesn't need to be like this. It doesn't need to be doing what it's doing now. If I'm going to @play a game of mastermind, I'm going to decide to either @make_the_code or @break_the_code.... so when..where would comparing the answer come into play? Well, if I was breaking the code...it would be something I do after I @guess_the_secret_code.... so then, I think I walso am close to firing up Rspec again, to look at things from that perspective. But I think the next thing I'm really going to do is start to comment out large sections of the code, and move from there.
+
+    
+    # comparing_answer(user_guess, secret_code)
+    # while correct_colors != 4
+    #   puts secret_code
+    #   break_the_code
+    #   comparing_answer(user_guess, secret_code)
+    # end
+    # puts "congrats! you got the correct four colors! they are: #{user_guess}"
+    # puts right_position(user_guess, secret_code)
   end
 
   # 2. Here's the make_or_break method; it takes an optional parameter. And that's probably for testing purposes....
@@ -58,7 +66,7 @@ class Game
     input
   end
 
-  def get_guess(input = nil)
+  def break_the_code(input = nil)
     puts "\n\n\nenter your guess.\n"
     puts "your options are:\n"
     puts '(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet'
@@ -84,7 +92,7 @@ class Game
 
   # 19. Ok, so I've had to do a lot of actual looking to decipher what is happening. And this is sort of hwat happens when reviewing code....the writing and slowing down naturally gives way to the brains ability to comprehend, which is much faster. However, the brains ability to translate or communicate that UNDERSTANDING to the OVERSTANDING is limited by my brains 'toolbox' or my brains knowledge base. That might be the id, ego and superego....where the Id is the understanding, the superego is the overstanding, and the ego is the ability to make the two cooperate. But this is taking me away from tghe coding...
 
-  #20. So, what have I been looking at? Well, since the #comparing_answer method accepts two parameters and they are required, I was wondering where the two parameters are being defined; looking at the two parameters, they are named: 1. the_guess and 2. secret_code_arr;Now this is fairly obvious what the parameters are going to contain, at least generally. the parameters are going to be a guess and the secret code in the form of an array. So then the assumption is that the secret_code_arr is already set as part of the instantiation of a Game object instance. This is basic understanding of OOP and programming. 
+  #20. So, what have I been looking at? Well, since the #comparing_answer method accepts two parameters and they are required, I was wondering where the two parameters are being defined; looking at the two parameters, they are named: 1. the_guess and 2. secret_code_arr;Now this is fairly obvious what the parameters are going to contain, at least generally. the parameters are going to be a guess and the secret code in the form of an array. So then the assumption is that the secret_code_arr is already set as part of the instantiation of a Game object instance. This is basic understanding of OOP and programming. But what is the_guess set to? the_guess is actually @the_guess, which is an instance variable, so when the Game object is instantiated, the @the_guess (this should be read as: the at-the-guess) instance variable is created. And looking at the constructor method (the initialize method) I'll see the the @the_guess instance variable is actually an empty string. So this is why the @comparing_answer method will work without any actual guess from the user. This is not an optimal way...or at least it doesn't feel like an optimally designed piece of code. Like...why have an empty string? When I could shift the parameter in the @comparing_answer to contain a default value; There could be other ways to do this too. So yeah. That's why it doesn't "feel" like optimal code. or at least, not optimal Ruby code. For what it's worth. Ok, moving on...I understand this. What else can I grasp? Why was I even looking at this? I think because I'm attempting to prevent the script from breakinh while attempting to select @make_the_code. So I'm going to go back up and look at the @play method...go there for note #21
   def comparing_answer(the_guess, secret_code_arr)
     # guess_as_array = the_guess.split('')
     good_guesses = 8 - (the_guess + secret_code_arr).uniq.length
