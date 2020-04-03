@@ -2,22 +2,11 @@
 
 require "./lib/main.rb"
 
-RSpec.describe "Game#comparing_the_answer" do
-  describe "the return value" do
-    it "returns an integer" do
-      game = Game.new
-      the_guess = %w[r o y g]
-      the_code = %w[g y i v]
-      expect(game.comparing_answer(the_guess, the_code)).to be_an(Integer)
-    end
-  end
-end
-
 RSpec.describe "#break_the_code" do
-  it "works with a string as a parameter" do
-    game = Game.new
-    input = "royg"
-    expect(game.break_the_code(input)).to be_truthy
+  describe 'how the method prompts the user' do
+    it 'puts the possible colors to the command line/terminal' do
+      # does something
+    end
   end
 end
 
@@ -34,13 +23,6 @@ RSpec.describe "@rspec_break_the_code" do
       game = Game.new
       expect(game.rspec_break_the_code).to 
     end
-  end
-end
-
-RSpec.describe "Game#initialize" do
-  it "has colors" do
-    game = Game.new
-    expect(game.colors).to be_an(Array)
   end
 end
 

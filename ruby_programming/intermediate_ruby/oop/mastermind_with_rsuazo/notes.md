@@ -95,3 +95,57 @@ So the class has methods. Those methods are `describe` and/or `context`. The blo
 This seems to make sense, but I'm not sure. So I want to take a closer look at the examples/tests I have set up. 
 
 So, it looks like the way I can use RSpec is a little more wide open. It's not quite so dogmatic, or idiomatic; I mean, the way the documentation is written, it feels like a full pair of lungs. 
+
+# 4/3/2020
+Alright, so now what am I going to start with? I'm pretty sure I was doing some RSpec teting yesterday when I finished the day; and I want to pick up where I left off; but there was a definite method I was working on when my focus shifted to RSpec. It had to be @break_the_code...since the RSpec method I created is called @rspec_break_the_code; so that's what I'll return to. But right now, what I'm doing is working on RSpec, and understanding a little more about it. Becuase I want to write RSpec tests with some clarity, with some accuracy. And it would really help to build faster. I believe. So, let me continue with the RSpec study...
+
+
+Ah, that's right, I was attempting to find some information on `specify`...but I'm not certain `specify` is an actual keyword in RSpec. So i'm going to return to the about page and see if I can find where I think it's referenced.
+
+Ok, so the only thing I can really find, in terms of providing clarity, is that `specify` is interchangable with `it`. And it's existence as a tool serves to replace `it` when `it` doesn't "read" naturally for the description of the unit test I'm attempting to write. Because remember, the entire structure of the testing is predicated on the idea that it's articulated in a conversational sense: that is: 
+
+> person 1: Describe the beginning score of a skeeball game
+> person 2: It is zero
+
+So then the point of `specify` is to replace the `it` as articulated by person 2 in the example above. 
+
+But I'm not sure when or how to use it. Like, I guess I'd want to write some examples of it. I'm not going to get hung up on it. Becaue Ive learned a lot more about RSpec recently that I stil want to practice with. 
+
+#### Write 5 'describe' statements for a user
+1. Describe a guess a user could make
+2. Describe a response to return to a user
+3. Describe an incorrect guess made by a user
+4. Describe a correct guess made by a user
+5. Describe a winning solution provided by a user
+
+#### Write 5 RSpec describe statemens using the 5 'describe' statements above
+```ruby
+#1
+RSpec.describe 'a guess a user could make' do
+ #something here
+end
+
+#2
+RSpec.describe ' a response to return to a user' do
+  # something here
+end
+
+#3
+RSpec.describe 'an incorrect guess made by a user' do
+  # something here
+end
+
+#4
+RSpec.describe 'a correct guess made by a user' do
+  # something here
+end
+
+#5
+RSpec.describe 'a winning solution provided by a user' do
+  # something here
+end
+```
+
+Ok, so I want to go back to the mastermind program and attempt to write some more code. Or at least get more acquiainted; 
+
+What I want to do is write some more tests around either the @break_the_code or the @rspec_break_the_code method. Becuase what i want to do is sort of...write tests for the @rspec_break_the_code method...but really what I want to do is write the method based off the tests....so yeah...that's kind of what I'm doing. 
