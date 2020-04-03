@@ -32,7 +32,7 @@ class Game
 
     # 23. So, I just changed @get_guess to @break_the_code...and something strange appeared....in the @play method, I already have a call to @break_the_code at the appropriate time...but then, I also have a while loop that will call the @break_the_code method. so I think I want to look at this while loop...and see if I can simply this @play method. because it doesn't need to be like this. It doesn't need to be doing what it's doing now. If I'm going to @play a game of mastermind, I'm going to decide to either @make_the_code or @break_the_code.... so when..where would comparing the answer come into play? Well, if I was breaking the code...it would be something I do after I @guess_the_secret_code.... so then, I think I walso am close to firing up Rspec again, to look at things from that perspective. But I think the next thing I'm really going to do is start to comment out large sections of the code, and move from there.
 
-    
+
     # comparing_answer(user_guess, secret_code)
     # while correct_colors != 4
     #   puts secret_code
@@ -42,6 +42,10 @@ class Game
     # puts "congrats! you got the correct four colors! they are: #{user_guess}"
     # puts right_position(user_guess, secret_code)
   end
+
+  # 24. Ok, so I've changed the program, in a significant way. I don't like to see Errors of any type. So I've done something really simple to get myself back to a position of relative power over the program: that is, I've put most everything in comments, and I can gradually ddrip things back on as I need them. But more importantly, I've gotten rid of nothing. Which is awesome. So I can also think more seriously about getting into RSpec, which would be a good thing, shince that was the last thing Robert said he's working on. So i'll go and do that. Sweet, RSpec is already set up in here. The next thing is to try to run some RSpec tests and see what happens...
+
+  # 25. So the RSpec tests taht are set up are working just fine. Which is really better than I expected. So that's awesome. I don't really know how I need to set up RSpec, but I know that in this program it's working correctly so I can always come here and reference this setup. Ok. So now what? Open up the main_spec.rb
 
   # 2. Here's the make_or_break method; it takes an optional parameter. And that's probably for testing purposes....
   # 3. So then, I know from the previous notes that I am expecting this method to either return 'b' or not...
@@ -87,6 +91,12 @@ class Game
     end
     @user_guess = input.split('')
   end
+
+  def rspec_break_the_code
+    true
+  end
+
+  # rspec testing: well, I don't really know what I want this method to do though; because I just wrote it completely out of context; so I shouldnt really be getting worked up over the fact that it doesn't work. So then, in what context would I be using this? Well, so the point of this is that It'd be called, when? When the user wants to break the code. So how it is called isn't a behaviour of the method; that's a behavior of some parent mehtod; what I need to look at is what is happening after this method is called. So the point is, this mehtod will be called; and then what will happen? The user will be prompted for input. So do that. OR say taht. 
 
   # 18. Here it is. So, what the hell is it doing? Man, I feel like I should have to work this hard to understand what the method is doing. Then again, I am returning to the code after being awway from it for a while. But that's alright...I can still be constructively critical of the code. So, slow down a litlte bit, and understand the method, so I can understand why the script is breaking when the user takes a certain action. 
 
