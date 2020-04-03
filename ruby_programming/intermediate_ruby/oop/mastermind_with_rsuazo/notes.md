@@ -149,3 +149,6 @@ end
 Ok, so I want to go back to the mastermind program and attempt to write some more code. Or at least get more acquiainted; 
 
 What I want to do is write some more tests around either the @break_the_code or the @rspec_break_the_code method. Becuase what i want to do is sort of...write tests for the @rspec_break_the_code method...but really what I want to do is write the method based off the tests....so yeah...that's kind of what I'm doing. 
+
+Ok, so now, here's what's doing: I'm looking for a RSpec example for putting tot he command line; which I've done before; but I'm doing it again with a little different context....
+
