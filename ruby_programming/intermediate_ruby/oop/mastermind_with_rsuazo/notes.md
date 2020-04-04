@@ -2,7 +2,7 @@
 
 It's tough to return after stepping away for a minute. 
 
-So then, what to do....
+So then, what to do.... 
 
 To step back in, start by looking around first, and then taking a step..
 
@@ -154,3 +154,26 @@ What I want to do is write some more tests around either the @break_the_code or 
 
 Ok, so now, here's what's doing: I'm looking for a RSpec example for putting tot he command line; which I've done before; but I'm doing it again with a little different context....
 
+Alright, so here...an issue. I'm attemptingto write a test for this method...but I'm attempting to test for behaviour that is not the return value of the mehtod. 
+
+Instead of attempting to figure out how to write a test for this sort of scenario, it just dawned on me that perhaps I'd be better suited to reduce the method, and make it do less....
+
+so instead of just writing a new method, I'm going to build it through RSpec first...
+
+And here's what I've done: 
+
+```ruby
+RSpec.describe "#prompt_the_user" do
+  describe "how a guess is solicited from the user" do
+    it "puts text to standard output" do
+      game = Game.new
+      test_variable = game.prompt_the_user
+      expect{test_variable}.to output.to_stdout
+    end
+  end
+end
+```
+
+but I haven't actually writte the `#prompt_the_user` method any where in the `main.rb` file. 
+
+So i'm going to run the test suite, though It's a little unncessary. 

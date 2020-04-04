@@ -2,21 +2,25 @@
 
 require "./lib/main.rb"
 
-RSpec.describe "#break_the_code" do
-  describe 'how the method prompts the user' do
-    it 'puts the possible colors to the command line/terminal' do
-      game = Game.new
-      input = 'royg'
-      expect(game.break_the_code(input)).to output("").
-    end
-  end
-end
-
 RSpec.describe "@rspec_break_the_code" do
   describe "the methods return value" do
     it "is true" do
       game = Game.new
       expect(game.rspec_break_the_code).to eq(true)
+    end
+  end
+end
+
+RSpec.describe "@prompt_the_user" do
+  describe "how a guess is solicited from the user" do
+    it "puts text to standard output" do
+      game = Game.new
+      expect{ game.prompt_the_user }.to output.to_stdout
+    end
+
+    specify "the specific  text that is presented to the user" do
+      game = Game.new
+      expect{ game.prompt_the_user }.to output("\n\n\nenter your guess.\nyour options are:\n").to_stdout
     end
   end
 end

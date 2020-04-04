@@ -71,8 +71,7 @@ class Game
   end
 
   def break_the_code(input = nil)
-    puts "\n\n\nenter your guess.\n"
-    puts "your options are:\n"
+    
     puts '(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet'
     loop do
       input ||= gets.chomp.downcase
@@ -95,6 +94,11 @@ class Game
   def rspec_break_the_code
     true
   end
+
+ def prompt_the_user
+  puts "\n\n\nenter your guess.\n"
+  puts "your options are:\n"
+ end
 
   # rspec testing: well, I don't really know what I want this method to do though; because I just wrote it completely out of context; so I shouldnt really be getting worked up over the fact that it doesn't work. So then, in what context would I be using this? Well, so the point of this is that It'd be called, when? When the user wants to break the code. So how it is called isn't a behaviour of the method; that's a behavior of some parent mehtod; what I need to look at is what is happening after this method is called. So the point is, this mehtod will be called; and then what will happen? The user will be prompted for input. So do that. OR say taht. 
 
