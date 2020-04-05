@@ -20,7 +20,16 @@ RSpec.describe "@prompt_the_user" do
 
     specify "the specific  text that is presented to the user" do
       game = Game.new
-      expect{ game.prompt_the_user }.to output("\n\n\nenter your guess.\nyour options are:\n").to_stdout
+      expect{ game.prompt_the_user }.to output("\n\nEnter a guess\n\nyour options are (select only 4):\n(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet\n").to_stdout
+    end
+  end
+end
+
+RSpec.describe "generate_a_guess" do
+  describe "what the method does" do
+    it "returns a random string of four letters" do
+      game = Game.new
+      expect(game.generate_a_guess.length).to be(4)
     end
   end
 end
