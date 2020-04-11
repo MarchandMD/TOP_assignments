@@ -242,5 +242,7 @@ I mean, I know at a "mechanical" level it's applying a unicode value for black o
 
 And I think this is where the "Child < Parent" relationship is relevant. Because the `Pawn` instance will have access to the `@unicode` instance variable, and is able to set the `Piece@unicode` instance variable from within the `Pawn` class, because it is a `Child` of the `Piece` class. Makes perfect sense. 
 
+# 4/11/2020
+First action of the day was an attempt to `git push origin master` and was rejected because of some changes on the remote that I don't have locally. 
 
-
+So, I don't really care about whatever changes there are however, I want to get better at managing these conflicts, and I'm not at all able to right now. I know that git fetch will pull in the changes, but not merge them. So why don't I try that and see what happens. Or at least read a little bit about that. Because that's one of the next things I want to be able to do. Or at least I know it's another skill. Yeah, it's not exactly what I was planning on doing, but it's worthwhile to do at least once...
