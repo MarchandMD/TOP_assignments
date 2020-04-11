@@ -183,3 +183,64 @@ Back to the article:
 Alright, so this is a good thing, because I do sort of know what the `yield` keyword is good for, but I don't really know what it's good for. 
 
 And now I'm thinking again about building a `rails` website. And how it would be good for me. And maybe good for someone else. But I already have a lot of the side work done, with one of my websites. Let me see if I can find it. Yeah, so it's the blog title dump and chase. But that's corny. So something simple: Another Rails blog
+
+Back to the article. 
+
+> Let's redefine the `Parent#say` method by adding the `yield` keyword in it
+
+```ruby
+class Parent
+  def say
+    yield
+  end
+end
+
+class Child
+  def say
+    super
+  end
+end
+
+Child.new.say { p 'Hi! Glad to know you Parent!' }
+#=> 'Hi! Glad to know you Parent!'
+```
+
+So, before I go to the article for an explanation, I see that I'm calling the `Child.new.say` method. I'm also passing a block to it. So somewhere there's a yield that's yielding to the block. 
+
+the `yield` is in the `Parent class`. So the `Child#say` call is sending Ruby to the `Parent.say` call, and the `yield` in the `Parent#say` is sending Ruby to the block. 
+
+Now to confirm that with the article. 
+
+So this was "super" easy to understand. (I couldn't resist)
+
+# `Super` with ancestor chain
+
+> Let's make the `Parent` class inherit from the `GrandParent` class
+
+I don't think I wnat to continue on with this rgith now, because I think I understand the `super` keyword. Let me go back tot he StackExchange article that i'm ripping apart.
+
+right, ok, so I was buiding the `Pawn` class, and I saw the existence of the `super` keyword..and I saw the existence of `Pawn@color`. So, if I want to have some control over the `Parent` class method, and I want to pass some argument/parameter to it, I can do that by using the `Child` class. 
+
+So then I want to konw exactly what the `Piece#color` method is doing by default, so I can understand what the `Child#piece` is sending to it. 
+
+```ruby
+class Piece
+  attr_accessor :color, :unicode, :position
+
+  def initialize(color, position = nil)
+    @color = color
+    @position = position
+  end
+end
+```
+
+By being a `Child` of `Piece`, the creation of a `Pawn` (which requires an argument equal to a color) will associate the color to the `@color` instance variable. That's all. 
+
+So then I have a question about the rest of the `Pawn#initialize` method: What is the `#initialize` method doing with the `when` statement? 
+
+I mean, I know at a "mechanical" level it's applying a unicode value for black or white to the `@unicode` instance variable...but how is it doing that? 
+
+And I think this is where the "Child < Parent" relationship is relevant. Because the `Pawn` instance will have access to the `@unicode` instance variable, and is able to set the `Piece@unicode` instance variable from within the `Pawn` class, because it is a `Child` of the `Piece` class. Makes perfect sense. 
+
+
+
