@@ -2,7 +2,7 @@
 
 It's tough to return after stepping away for a minute. 
 
-So then, what to do....
+So then, what to do.... 
 
 To step back in, start by looking around first, and then taking a step..
 
@@ -154,3 +154,109 @@ What I want to do is write some more tests around either the @break_the_code or 
 
 Ok, so now, here's what's doing: I'm looking for a RSpec example for putting tot he command line; which I've done before; but I'm doing it again with a little different context....
 
+Alright, so here...an issue. I'm attemptingto write a test for this method...but I'm attempting to test for behaviour that is not the return value of the mehtod. 
+
+Instead of attempting to figure out how to write a test for this sort of scenario, it just dawned on me that perhaps I'd be better suited to reduce the method, and make it do less....
+
+so instead of just writing a new method, I'm going to build it through RSpec first...
+
+And here's what I've done: 
+
+```ruby
+RSpec.describe "#prompt_the_user" do
+  describe "how a guess is solicited from the user" do
+    it "puts text to standard output" do
+      game = Game.new
+      test_variable = game.prompt_the_user
+      expect{test_variable}.to output.to_stdout
+    end
+  end
+end
+```
+
+but I haven't actually writte the `#prompt_the_user` method any where in the `main.rb` file. 
+
+So i'm going to run the test suite, though It's a little unncessary. 
+
+# 04/04/2020
+Alright, so, want to continue to do some work, but it's very slow going right now. But I am doing some work; the work I'm doing is simplifying the #break__the)_code method. the way i'm simplifying the method is by removing unnecessary code from within the method, writing a brand new methdo simlpy to store the unnecessary...that is still necessary to the overall program, but not necessary to the individual method behavior. 
+
+So, what I'd really like to know now is if I can test...well, look, i've already tested the #prompt_the_user mehtod to completion. And I can use that mehtod in the #beak_the_code method, without needing to test it. No, I believe there is no need to test if one method contains another method. Taht's not the purpose of the method. Instead, I could simply keep the #prompt_the_suer mehtod out of the #break_the_code
+
+so, what can i do? 
+
+Well, the Game#play method is supposed to be doing most of the work. 
+
+But what I can do, is I can work within that method. 
+
+Now, what I'm doing is simply running a ternary statement logic that's then flowing to somethign else....one of two other methods. 
+
+What I want to do is do this `#prompt_the_user` method; but i'm not sure where to do that within the `#play` method. 
+
+I mean, the first answer that comes to m ind is doing something more complicated than a ternary statement...because it's entirely possible that it's not the most appropriate thing to do now. 
+
+And if was doing something like an `if` statement, I could add more individual statements.  for now, this is more suitable. Keep moving forward until something else comes along. 
+
+so then, yeah, this works. And I can write some more tests...
+
+
+So looking for the next thing to do, I'm looking at the #breakt_thec=ode metho, and I realize that it isn't actually breaking the code...or at least, the name of the method is not accurate; it's not breaking a code, is entering a guess. 
+
+So, yeah, IO mean, that's waht i'm going to do, i'm going to change ths method name to somethign more accurate. And i'm going to focus on something else. I mean, what I ahve is I will have a method that will make a guess, and then if I create some AI (type of thing) then I should, or could be able to use it to generate a guess. 
+
+# 04/05/2020
+
+So, I left yesteday with beginning to build the `generate_a_guess` method; and that's going to mimic the current `#break_the_code` method; so what's the point of creating a similar method? The point is to both usurp the current method, as well as continue to build the new method out using testing to complete it's capability. 
+
+So with that ssaid, I'll begin writing tests for it. 
+
+Ok, so now that I'm doing some work, I want to take a closer look a the RSpec: specifically, Im looking at the Core of RSpec 3.9, and the Eample groups. Because the example groups are the things that are within `describe` and `it`. 
+
+So, yeah, i have a pretty good grasp on what the example group is....at the end of the day it's the actual unit tests that are living within the `it` block...which is typically living within the `describe` block. 
+
+the enxt section within the RSpec documentation Core section, following the description of exmaple gruops is `Shared examples`
+
+## Shared examples
+> a shared exmaple lets me describe behaviour of classes or modules. When declared, a shared groups content is stored. It is only realized in the context of another example group, which provides any context the shared group needs to run. 
+
+I don't know what any of these sentences mean. So let me pick it apart. 
+
+> 1. A shared example leets me describe behavior of classes or modules. 
+
+So I'm familiar with both classes and modules. So a shared example is an additional tool to help me describe the behavior of classes or modules, similar to example groups. So do they take the place.
+
+> 2. When declared, a shared group content is stored. 
+
+So this suggests that shared examples don't always need to be declared; so this re-inforces the idea that they are another tool that I can choose to use or not use within an example group. 
+
+So as I look at it now...there are example groups and therea re shared examples. So is the implication that the shared examples....are shared example *groups*? I'm not sure. 
+
+Keep reading. 
+
+The shared group....yes, it is `shared example GROUPS` because the next sentence fragment is: 
+
+> ...a shared group content is stored. 
+
+so this explicitly states something. That the shared example is a group. And the content of the example group is stored, and will be allowed to be shared. 
+
+> 3. It is only realized in the context of another example group, which provides any context the shared group needs to run. 
+
+So this says that the shared examples are only seen in the context of another example group, and that the context of the second example group will provide context for the shared example group to run. 
+
+So this helps a little more: it sounds like the idea is that the example groups are providing context to the code...and that it's possible to have one basic example group, and then to create a second example group that has some more context and it's possible to take that first basic example group and share it with the second example group, whihc contains additional context. So let me see it in action or wtih an exmple group and see if I can combine the documentation definition, my interpretation, and the documentation examples. 
+
+## shared examples examples
+
+So, before I dig into this...I'll say: I know this is a litlte over my head in terms of implementation, but that's alright for me. 
+
+So The first expalanation the examples give me is a way to include certain examples in another example group. Which is of course implying that there's a way to "name" a gropu of examples. 
+
+I guess what I'm seeing here is that this idea is actually much mnore advanced than I'm attempting to use or do with RSpec. Like, it doesn't help me write inidivudal unit tests; instead this is teachimg me how to share entire example groups across example groups. Which isn't something I know to do, or have a need to do. at least not yet. So i'm going to move onto the next idea in the core documentation section. 
+
+## Shared Context
+
+Ok, so this looks like it might be helpful within the first sentence of the documentation: 
+
+>  User `shared_context` to define a block that will be evaulated in the context of example groups either locally, using `include_context` in an example group, or globally using `config.include_context`
+
+So, what Im assuming this mean is that I'm looking at a block that is defined and will be evaluated for a local example group. So I define some block in the context of an example group, and whatever is in that block will be applied to the unit tests. 

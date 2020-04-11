@@ -14,24 +14,13 @@ class Game
     @correct_colors = 0
   end
 
-  # called with Game#play; Wonder what it really does...
   def play
-    # so this method name is a little verbose: #prompt_user_to_make_or_break; could probably be reduced to #make_or_break
-    # run the #make_or_break method right away, which either returns 'b' or it does not. Before moving on, I should probably
-    # go and take a look at #make_or_break
-    # 11. alright, so i have this simple ternary statement checking if the #make_or_break method returns a 'b' or not; The next thing I'm looking at is the methods here for the true/false responses to the simple logic of the ternary statement; and I see that we've created a method for when the user wants to break the code, but we haven't created a method for the situation when the user wants to #make_the_code; all I have is a method called #not_yet (since renamed to make_the_code); So, since I'm attempting to walk into Ruby again, I think I'm ready to take a look at the #not_yet (since renamed to make_the_code) method, and attempt to begin writing code there....so here we go...
-
-    # 16. So, I htink the issue obviously will be within this #play method...because there are some definitive commands that are being called sequentially, and non-conditionally. So, with that information in mind, the obvious thing to do is to look at the next line of the #play method, to see what the program/Ruby is attempting to do....
-    make_or_break == 'b' ? break_the_code : make_the_code
-  
-    # 17. So the next thing the overall program (and more specifically #play method) is attempting to do, is run the #comparing_answer method...so I now have to re-acquiant myself with the #comparing_answer method.
-    
-    # 21. Ok, so i'm really starting to "see" this @play method for what it is...and it's a little sloppy. Or it's a lot sloppy. So I'm going to think about the game play a little bit. Like, what's the natural flow that I think should be happening? First: determine if the user wants to make or break the code. I've got that. If the user wants to break the code, then there should be a method called @break_the_code...and that method should, IMHO, contain everything regarding the breaking of the code. Other methods can be in that one, but the @play method should be as simple as possible. If I try to keep eerything simple as possible by writing "ghost" methods, then I am simultaneously building the existing method, and creating more work for down stream. Which is ideal, because then i always ahve something to do. And can scheduel things...sort of. If I was the scheudling type. Which I'm not. 
-
-    # 22. So I want to start moving things around. I'm going to look at getting rid of the @get_guess method...or maybe just renaming it...and then building up the @make_the_code method. So here goes. next comment
-
-    # 23. So, I just changed @get_guess to @break_the_code...and something strange appeared....in the @play method, I already have a call to @break_the_code at the appropriate time...but then, I also have a while loop that will call the @break_the_code method. so I think I want to look at this while loop...and see if I can simply this @play method. because it doesn't need to be like this. It doesn't need to be doing what it's doing now. If I'm going to @play a game of mastermind, I'm going to decide to either @make_the_code or @break_the_code.... so when..where would comparing the answer come into play? Well, if I was breaking the code...it would be something I do after I @guess_the_secret_code.... so then, I think I walso am close to firing up Rspec again, to look at things from that perspective. But I think the next thing I'm really going to do is start to comment out large sections of the code, and move from there.
-
+    if make_or_break == 'b'
+      prompt_the_user
+      break_the_code
+    else
+      make_the_code
+    end
 
     # comparing_answer(user_guess, secret_code)
     # while correct_colors != 4
@@ -70,14 +59,10 @@ class Game
     input
   end
 
-  def break_the_code(input = nil)
-    puts "\n\n\nenter your guess.\n"
-    puts "your options are:\n"
-    puts '(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet'
+  def break_the_code(input = nil)    
     loop do
       input ||= gets.chomp.downcase
       if input.split('').length != 4
-        puts 'select only 4'
         input = nil
       elsif input.split('').all? { |x| colors.include?(x) } == false
         puts 'select only valid colors'
@@ -92,9 +77,19 @@ class Game
     @user_guess = input.split('')
   end
 
+  def generate_a_guess(input = nil)
+    'four'
+  end
+
   def rspec_break_the_code
     true
   end
+
+ def prompt_the_user
+  puts "\n\nEnter a guess\n\n"
+  puts "your options are (select only 4):\n"
+  puts '(r)ed, (o)range, (y)ellow, (g)reen, (b)lue, (i)indigo, (v)iolet'
+ end
 
   # rspec testing: well, I don't really know what I want this method to do though; because I just wrote it completely out of context; so I shouldnt really be getting worked up over the fact that it doesn't work. So then, in what context would I be using this? Well, so the point of this is that It'd be called, when? When the user wants to break the code. So how it is called isn't a behaviour of the method; that's a behavior of some parent mehtod; what I need to look at is what is happening after this method is called. So the point is, this mehtod will be called; and then what will happen? The user will be prompted for input. So do that. OR say taht. 
 
