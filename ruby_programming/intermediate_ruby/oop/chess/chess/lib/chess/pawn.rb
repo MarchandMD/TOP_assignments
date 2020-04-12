@@ -19,7 +19,7 @@ class Pawn < Piece
         [from_square.x, from_square.y + 1], 
         [from_square.x, from_square.y + 2]
       )
-    elsif @on_initial_square && @color == "white"
+    elsif @on_initial_square && @color == "black"
         potentials.push(
           [from_square.x, from_square.y - 1], 
           [from_square.x, from_square.y - 2]

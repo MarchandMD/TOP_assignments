@@ -246,3 +246,91 @@ And I think this is where the "Child < Parent" relationship is relevant. Because
 First action of the day was an attempt to `git push origin master` and was rejected because of some changes on the remote that I don't have locally. 
 
 So, I don't really care about whatever changes there are however, I want to get better at managing these conflicts, and I'm not at all able to right now. I know that git fetch will pull in the changes, but not merge them. So why don't I try that and see what happens. Or at least read a little bit about that. Because that's one of the next things I want to be able to do. Or at least I know it's another skill. Yeah, it's not exactly what I was planning on doing, but it's worthwhile to do at least once...
+
+Ok, so what I did was I attempted to `git fetch`...but I'm not sure I did it properly. Because there were no branches taht were created. So since this is kind of a side skill I want, Im going to go to the article, with this last minute here, and will spend more time, because I want to spend more time with the actual tutorial. I do enjoy being on a timer....I always have. 
+
+##  `def get_valid_moves`
+So this is the method I'm copying now. I'm going to write a little bit more about it, because at this point all im doing is copying and pasting, and there's a lot to copy paste. I mean, i'm not copying/pasting, I'm actually typing it, which keeps my brain thinking about what it is I'm typing. 
+
+Ok, time out...and time in
+
+So, this method, whenever it's called, where ever it's called, will get the valid moves for a piece. So, why would I want to have all this stored in the program? 
+
+Thinking about it now, if I select a piece and I opt to move it somewhere, one way to be able to quickly determine if a move is valid, is to have a list of all the valid moves. Then, if I compare the move a user is attempting to make with the list of valid moves, it's fairly easy to update the board/score/alternate turns, etc, because the move is a valid move. So it's a way for the program to have, for any given piece, a list of the valid moves depending on it's current location, piece type, and context of the game. So what appears to be happening is...well I'm not sure. But I've had to begin thinking about this. One thing I don't know is if white starts at the top of the board, or the bottom of the board. That is, at the beginning of the `Board` array, or at the end of the `Board` array. And I'm assuming `Board` is an array, which it most likely is. I'm not sure how else the `Board` would be written; So, if the White pieces are traditionally placed, they'd be on the bottom of the screen, or the end of the `Board` array. And so if I were to move...a piece...ok, multi-dimensional arrays are giving me fits. I'm going to spend some time re-freshing on those.
+
+### multi-dimensional arrays
+
+The first place I'm going to go is that TicTaToe tutorial, because I understood that once, and I want to refresh there. 
+
+The grid for a board is an Array, with nested Arrays within it. so like this: 
+
+```ruby
+fruits = [
+           ["apple", "red"],
+           ["banana", "yellow"], 
+           ["grape", "green"]
+          ]
+```
+What I'm really struggling with is the coordinate system that's used for this. Coordinate systems are usually (x,y), and originate from the lower left. The nested array coordinate system originates in the upper left, and is expressed in terms of (y,x). 
+
+This would make the value of "apple" look like: 
+
+```ruby
+fruits[0][0]
+#=> "apple"
+```
+but that doesn't illustrate it for me. The value of "green" would be: 
+
+```ruby
+fruits[2][1]
+#=> "green"
+```
+
+I'm goign to verify this in IRB now. Ok, that's it. So then it makes much more sense that the first coordinate is y and the second coordinate is x. 
+
+So then extrapolating this to a chess board: 
+
+```ruby
+chess_board = [
+  ['a8','b8','c8','d8','e8','f8','g8','h8'],
+  ['a7','b7','c7','d7','e7','f7','g7','h7'],
+  ['a6','b6','c6','d6','e6','f6','g6','h6'],
+  ['a5','b5','c5','d5','e5','f5','g5','h5'],
+  ['a4','b4','c4','d4','e4','f4','g4','h4'],
+  ['a3','b3','c3','d3','e3','f3','g3','h3'],
+  ['a2','b2','c2','d2','e2','f2','g2','h2'],
+  ['a1','b1','c1','d1','e1','f1','g1','h1']
+]
+```
+
+Ok, so I think I understand this a little better. The x and y coordinates are not explicitly needed for me to define within the cell of the game board, because those coordinates are available just as part of the normal programming language. I access elements of an array (and a nested array) using integers, and that's more or less straightforward, if not a little counter-intuitive. So yeah, it helps to practice some. And I can sort of teach myself how to identify things within it. 
+
+I wonder though if I'm looking at the board correctly. Like, if I was the white pieces. I'm going to start a new game of chess against the computer to verify. 
+
+Do I want to keep looking at this Chess game? Do I want to keep digging into it? Yes, I do. 
+
+But I don't want to keep building up `Pawn` class right now. I want to switch to something else. 
+
+# `class Square`
+
+this seems to be an easy enough class to understand, but there's a little more going on. So i'm going to pick it apart, piece by piece. 
+
+The `attr_accessor` methods are
+
+```ruby
+:piece_on_square
+:x
+:y
+:coordinates
+```
+
+So, I wonder how `@piece_on_square` is used. I see that it's used in hte `Game` class...and you don't really get much higher level then the `Game` class, unless the author built another class to run the Game, which is entirely possible. It's something I've done. Just for the sake of being clean and neat and organzied. 
+
+So then my curiousity took me to this question: How is the `@piece_on_square` instance variable/instance method being used in the `Game` class? and I saw that there is a call to `@piece_on_square` or maybe it's `#piece_on_square` by some other variable called `value`. And so my line of questioning wondered: how the hell does the `Game` class have access to the `@piece_on_sqsuare/#piece_on_square` method? And the answer to that is: whatever object is stored in the variable `value` must have instances of a `Square`...and what is a Square? Well, in this context, it's a square on a Chess board, so there must be a `Board` object that's being instantiated and used in the `Game` class. 
+
+# 4/12/2020
+
+If I just look at (not code) the `Game` class, I see that the only `attr_accessor` mehtod in this class is `:board`, which I can see in the contstructor method as being a `Board` class object. So after being an investigator for a couple of minutes, I see that the `Game` uses a `Board` and the `Board` most likely is a series of `Squares`. 
+
+So I'm going to take a second to be critical here. The naming of the Array (because that's most likely what the board is going to be) elements as Squares seems a little strange to me. I mean, that's what they are, and it is actually really intuitive, maybe. But then again, is it intuitive or is it abstraction? I mean, a square is a geometric shape, so that's not all that intuitive. But it is a good enough name, and it actually is better than say something like Cell, or Space, or anything else. So maybe I'm not going to be critical here. 
+
